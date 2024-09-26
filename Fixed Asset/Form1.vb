@@ -184,7 +184,7 @@ Public Class Form1
             cmd.Parameters.Clear()
             cmd.Parameters.AddWithValue("@id", datagrid1.SelectedRows(0).Cells(0).Value)
             cmd.ExecuteNonQuery()
-            MessageBox.Show("Record deleted successfully!!!!!!!!!!!!!")
+            MessageBox.Show("Record deleted successfully!")
             LoadData()
         Catch ex As Exception
             MessageBox.Show("Error: " & ex.Message)
