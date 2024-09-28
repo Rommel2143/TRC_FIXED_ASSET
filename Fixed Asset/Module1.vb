@@ -9,6 +9,9 @@ Module Module1
     Public cmd As New MySqlCommand
     Public da As New MySqlDataAdapter
     Public dt As New DataTable
+    Public dt1 As New DataTable
+    Public da1 As New MySqlDataAdapter
+
 
     Public Sub OpenConnection()
         Try
@@ -29,4 +32,16 @@ Module Module1
             MessageBox.Show("Error closing connection: " & ex.Message)
         End Try
     End Sub
+
+    Public Sub display_form(form As Windows.Forms.Form)
+        With form
+            .Refresh()
+            .TopLevel = False
+            Mainframe.Panel1.Controls.Add(form)
+            .BringToFront()
+            .Show()
+        End With
+    End Sub
+
+
 End Module

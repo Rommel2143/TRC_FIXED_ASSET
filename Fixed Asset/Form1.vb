@@ -4,18 +4,26 @@ Public Class Form1
     Dim secno As Integer
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadData()
+        LoadData1()
         datagrid1.ReadOnly = True
+        datagrid2.ReadOnly = True
         LoadComboBoxData()
+        DisableInputFields()
+        cb_status.Text = "Active"
     End Sub
 
     Private Sub btn_save_Click(sender As Object, e As EventArgs) Handles btn_save.Click
+
         If Not ValidateFields() Then Return
 
         Try
+
             OpenConnection()
             cmd.Connection = con
-            cmd.CommandText = "INSERT INTO tblfixedasset(NO, FANO, FATYPE, SECTION, ITEMDES, DATE, PONO, SINO, AMOUNT, SUPPLIER) VALUES (@no, @fano, @fanotype, @section, @itemdes, @date, @pono, @sino, @amount, @supplier)"
+            cmd.CommandText = "INSERT INTO tblfixedasset (FULLNAME, NO, FANO, FATYPE, SECTION, ITEMDES, DATE, PONO, SINO, AMOUNT, SUPPLIER, STATUS, REMARK, QRCODE) 
+                                VALUES (@fullname, @no, @fano, @fanotype, @section, @itemdes, @date, @pono, @sino, @amount, @supplier, @status, @remark, @qrcode)"
             cmd.Parameters.Clear()
+            cmd.Parameters.AddWithValue("@fullname", txt_user.Text)
             cmd.Parameters.AddWithValue("@no", txt_no.Text)
             cmd.Parameters.AddWithValue("@fano", txt_fano.Text)
             cmd.Parameters.AddWithValue("@fanotype", cb_fatype.Text)
@@ -26,8 +34,12 @@ Public Class Form1
             cmd.Parameters.AddWithValue("@sino", txt_sino.Text)
             cmd.Parameters.AddWithValue("@amount", txt_amount.Text)
             cmd.Parameters.AddWithValue("@supplier", cb_supplier.Text)
+            cmd.Parameters.AddWithValue("@status", cb_status.Text)
+            cmd.Parameters.AddWithValue("@remark", txt_remark.Text)
+            cmd.Parameters.AddWithValue("@qrcode", txt_fano.Text & "|" & cb_fatype.Text & "|" & dt_date.Value.ToString("yyyy-MM-dd"))
 
             cmd.ExecuteNonQuery()
+
             MessageBox.Show("Record added successfully!")
 
             CloseConnection()
@@ -38,23 +50,26 @@ Public Class Form1
             cmdUpdate.Parameters.AddWithValue("@section", cb_section.Text)
             ' Execute the update command without adding the @section parameter
             cmdUpdate.ExecuteNonQuery()
-
-            MessageBox.Show(txt_no.Text & "/" & txt_fano.Text)
+            txt_fano.Clear()
             ClearInputFields()
             LoadData()
 
         Catch ex As Exception
             MessageBox.Show("Error adding record: " & ex.Message)
         Finally
+
             CloseConnection()
         End Try
     End Sub
-
+    Public Sub SetFullname(ByVal fullname As String)
+        txt_user.Text = fullname
+    End Sub
     Private Function ValidateFields() As Boolean
         If String.IsNullOrWhiteSpace(txt_no.Text) Or
            String.IsNullOrWhiteSpace(txt_fano.Text) Or
            cb_fatype.SelectedIndex = -1 Or
            cb_section.SelectedIndex = -1 Or
+           cb_status.SelectedIndex = -1 Or
            String.IsNullOrWhiteSpace(txt_itemdes.Text) Or
            String.IsNullOrWhiteSpace(txt_pono.Text) Or
            String.IsNullOrWhiteSpace(txt_sino.Text) Or
@@ -67,6 +82,11 @@ Public Class Form1
     End Function
 
     Private Sub btnaddservice_Click(sender As Object, e As EventArgs) Handles btnaddservice.Click
+        ' Check if access is granted
+        If Not accessGranted Then
+            MessageBox.Show("Please click the 'Access' button first.")
+            Return
+        End If
         If cb_servicepro.SelectedIndex = -1 Or
            String.IsNullOrWhiteSpace(txt_amount1.Text) Or
            String.IsNullOrWhiteSpace(txt_sino1.Text) Then
@@ -77,26 +97,28 @@ Public Class Form1
         Try
             OpenConnection()
             cmd.Connection = con
-            cmd.CommandText = "INSERT INTO tblservices(SERVICEPRO, ACCDATE, PODATE, AMOUNT, SINO) VALUES (@servicepro, @accdate, @podate, @amount, @sino)"
+            cmd.CommandText = "INSERT INTO tblservices(FANO,SERVICEPRO, ACCDATE, PODATE, AMOUNT, SINO) VALUES (@fano, @servicepro, @accdate, @podate, @amount, @sino)"
+
 
             cmd.Parameters.Clear()
+            cmd.Parameters.AddWithValue("@fano", txt_fano.Text)
             cmd.Parameters.AddWithValue("@servicepro", cb_servicepro.Text)
             cmd.Parameters.AddWithValue("@accdate", dt_accomdate.Value.ToString("yyyy-MM-dd"))
             cmd.Parameters.AddWithValue("@podate", dt_podate.Value.ToString("yyyy-MM-dd"))
             cmd.Parameters.AddWithValue("@amount", txt_amount1.Text)
             cmd.Parameters.AddWithValue("@sino", txt_sino1.Text)
-
             cmd.ExecuteNonQuery()
+
             MessageBox.Show("Record added successfully!")
-            ClearInputFields()
-            LoadData()
+            ClearInputFields1()
+            DisableInputFields()
+            LoadData1()
         Catch ex As Exception
             MessageBox.Show("Error adding record: " & ex.Message)
         Finally
             CloseConnection()
         End Try
     End Sub
-
     Private Sub ClearInputFields()
         txt_no.Clear()
         txt_fano.Clear()
@@ -108,7 +130,33 @@ Public Class Form1
         txt_sino.Clear()
         txt_amount.Clear()
         cb_supplier.SelectedIndex = -1
+        txt_remark.Clear()
     End Sub
+    Private Sub ClearInputFields1()
+        cb_servicepro.SelectedIndex = -1
+        dt_accomdate.Value = DateTime.Now
+        dt_podate.Value = DateTime.Now
+        txt_amount1.Clear()
+        txt_sino1.Clear()
+    End Sub
+    ' This method enables input fields
+    Private Sub EnableInputFields()
+        cb_servicepro.Enabled = True
+        txt_amount1.Enabled = True
+        txt_sino1.Enabled = True
+        dt_accomdate.Enabled = True
+        dt_podate.Enabled = True
+    End Sub
+
+    ' This method disables input fields
+    Private Sub DisableInputFields()
+        cb_servicepro.Enabled = False
+        txt_amount1.Enabled = False
+        txt_sino1.Enabled = False
+        dt_accomdate.Enabled = False
+        dt_podate.Enabled = False
+    End Sub
+
 
     Private Sub LoadData()
         Try
@@ -118,13 +166,34 @@ Public Class Form1
             da = New MySqlDataAdapter(query, con)
             da.Fill(dt)
             datagrid1.DataSource = dt
+
+            If datagrid1.Columns.Contains("id") Then
+                datagrid1.Columns("id").Visible = False
+            End If
         Catch ex As Exception
             MessageBox.Show("Error loading data: " & ex.Message)
         Finally
             CloseConnection()
         End Try
     End Sub
+    Private Sub LoadData1()
+        Try
+            OpenConnection()
+            dt1.Clear()
+            Dim query As String = "SELECT * FROM tblservices"
+            da = New MySqlDataAdapter(query, con)
+            da.Fill(dt1)
+            datagrid2.DataSource = dt1
 
+            If datagrid2.Columns.Contains("id") Then
+                datagrid2.Columns("id").Visible = False
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Error loading data: " & ex.Message)
+        Finally
+            CloseConnection()
+        End Try
+    End Sub
     Private Sub UpdateRecordWithTransaction()
         If datagrid1.SelectedRows.Count = 0 Then
             MessageBox.Show("Please select a record to update.")
@@ -134,41 +203,36 @@ Public Class Form1
         Dim selectedRow As DataGridViewRow = datagrid1.SelectedRows(0)
         Dim id As Integer = Convert.ToInt32(selectedRow.Cells("id").Value)
 
-        Using transactionConnection As New MySqlConnection("server=localhost;port=3306;username=root;password=;database=trcdatabase")
-            Try
-                transactionConnection.Open()
-                Dim transaction As MySqlTransaction = transactionConnection.BeginTransaction()
-                Using cmd As New MySqlCommand("UPDATE tblfixedasset SET NO=@no, FANO=@fano, FATYPE=@fanotype, SECTION=@section, ITEMDES=@itemdes, DATE=@date, PONO=@pono, SINO=@sino, AMOUNT=@amount, SUPPLIER=@supplier WHERE id=@id", transactionConnection, transaction)
-                    cmd.Parameters.Clear()
-                    cmd.Parameters.AddWithValue("@id", id)
-                    cmd.Parameters.AddWithValue("@no", txt_no.Text)
-                    cmd.Parameters.AddWithValue("@fano", txt_fano.Text)
-                    cmd.Parameters.AddWithValue("@fanotype", cb_fatype.Text)
-                    cmd.Parameters.AddWithValue("@section", cb_section.Text)
-                    cmd.Parameters.AddWithValue("@itemdes", txt_itemdes.Text)
-                    cmd.Parameters.AddWithValue("@date", dt_date.Value.ToString("yyyy-MM-dd"))
-                    cmd.Parameters.AddWithValue("@pono", txt_pono.Text)
-                    cmd.Parameters.AddWithValue("@sino", txt_sino.Text)
-                    cmd.Parameters.AddWithValue("@amount", txt_amount.Text)
-                    cmd.Parameters.AddWithValue("@supplier", cb_supplier.Text)
+        ' Using transactionConnection As New MySqlConnection("server=localhost;port=3306;username=root;password=;database=trcdatabase")
+        Try
+            con.Close()
+            con.Open()
 
-                    Dim rowsAffected As Integer = cmd.ExecuteNonQuery()
-                    If rowsAffected > 0 Then
-                        transaction.Commit()
-                        MessageBox.Show("Record updated successfully!")
-                    Else
-                        transaction.Rollback()
-                        MessageBox.Show("No record was updated.")
-                    End If
-                End Using
-            Catch ex As Exception
-                MessageBox.Show("Error updating record: " & ex.Message)
-            Finally
-                If transactionConnection.State = ConnectionState.Open Then
-                    transactionConnection.Close()
-                End If
-            End Try
-        End Using
+            Using cmd As New MySqlCommand("UPDATE tblfixedasset SET FULLNAME=@fullname, NO=@no, FANO=@fano, FATYPE=@fanotype, SECTION=@section, ITEMDES=@itemdes, DATE=@date, PONO=@pono, SINO=@sino, AMOUNT=@amount, SUPPLIER=@supplier, STATUS=@status, REMARK=@remark WHERE id=@id", con)
+                cmd.Parameters.Clear()
+                cmd.Parameters.AddWithValue("@id", id)
+                cmd.Parameters.AddWithValue("@fullname", txt_user.Text)
+                cmd.Parameters.AddWithValue("@no", txt_no.Text)
+                cmd.Parameters.AddWithValue("@fano", txt_fano.Text)
+                cmd.Parameters.AddWithValue("@fanotype", cb_fatype.Text)
+                cmd.Parameters.AddWithValue("@section", cb_section.Text)
+                cmd.Parameters.AddWithValue("@itemdes", txt_itemdes.Text)
+                cmd.Parameters.AddWithValue("@date", dt_date.Value.ToString("yyyy-MM-dd"))
+                cmd.Parameters.AddWithValue("@pono", txt_pono.Text)
+                cmd.Parameters.AddWithValue("@sino", txt_sino.Text)
+                cmd.Parameters.AddWithValue("@amount", txt_amount.Text)
+                cmd.Parameters.AddWithValue("@supplier", cb_supplier.Text)
+                cmd.Parameters.AddWithValue("@status", cb_status.Text)
+                cmd.Parameters.AddWithValue("@remark", txt_remark.Text)
+                cmd.ExecuteNonQuery()
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Error updating record: " & ex.Message)
+        Finally
+            txt_fano.Text = String.Empty
+            con.Close()
+        End Try
+
     End Sub
 
     Private Sub btn_edit_Click(sender As Object, e As EventArgs) Handles btn_edit.Click
@@ -177,26 +241,11 @@ Public Class Form1
         ClearInputFields()
     End Sub
 
-    Private Sub btn_delete_Click(sender As Object, e As EventArgs) Handles btn_delete.Click
-        Try
-            OpenConnection()            cmd.Connection = con
-            cmd.CommandText = "DELETE FROM tblfixedasset WHERE id=@id"
-            cmd.Parameters.Clear()
-            cmd.Parameters.AddWithValue("@id", datagrid1.SelectedRows(0).Cells(0).Value)
-            cmd.ExecuteNonQuery()
-            MessageBox.Show("Record deleted successfully!")
-            LoadData()
-        Catch ex As Exception
-            MessageBox.Show("Error: " & ex.Message)
-        Finally
-            CloseConnection()
-        End Try
-    End Sub
-
 
     Private Sub datagrid1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles datagrid1.CellContentClick
         If e.RowIndex >= 0 Then
             Dim row As DataGridViewRow = datagrid1.Rows(e.RowIndex)
+            txt_user.Text = row.Cells("FULLNAME").Value.ToString()
             txt_no.Text = row.Cells("NO").Value.ToString()
             txt_fano.Text = row.Cells("FANO").Value.ToString()
             cb_fatype.Text = row.Cells("FATYPE").Value.ToString()
@@ -207,6 +256,19 @@ Public Class Form1
             txt_sino.Text = row.Cells("SINO").Value.ToString()
             txt_amount.Text = row.Cells("AMOUNT").Value.ToString()
             cb_supplier.Text = row.Cells("SUPPLIER").Value.ToString()
+            cb_status.Text = row.Cells("STATUS").Value.ToString()
+            txt_remark.Text = row.Cells("REMARK").Value.ToString()
+        End If
+    End Sub
+    Private Sub datagrid2_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles datagrid2.CellContentClick
+        If e.RowIndex >= 0 Then
+            Dim row As DataGridViewRow = datagrid2.Rows(e.RowIndex)
+            txt_fano.Text = row.Cells("FANO").Value.ToString()
+            cb_servicepro.Text = row.Cells("SERVICEPRO").Value.ToString()
+            dt_accomdate.Value = Convert.ToDateTime(row.Cells("ACCDATE").Value)
+            dt_podate.Value = Convert.ToDateTime(row.Cells("PODATE").Value)
+            txt_amount1.Text = row.Cells("AMOUNT").Value.ToString()
+            txt_sino1.Text = row.Cells("SINO").Value.ToString()
         End If
     End Sub
 
@@ -232,8 +294,6 @@ Public Class Form1
             End While
             reader.Close()
 
-
-
             ' Load Section from tblcn
             Dim sectionQuery As String = "SELECT selection FROM tblcn" ' Adjust 'selection' to the actual column name if necessary
             Dim sectionCmd As New MySqlCommand(sectionQuery, con)
@@ -254,7 +314,10 @@ Public Class Form1
 
     Private Sub btn_cancel_Click(sender As Object, e As EventArgs) Handles btn_cancel.Click
         ClearInputFields()
+        ClearInputFields1()
         datagrid1.ClearSelection()
+        datagrid2.ClearSelection()
+        txt_fano.Text = String.Empty
     End Sub
 
     Private Sub btn_exit_Click(sender As Object, e As EventArgs) Handles btn_exit.Click
@@ -264,10 +327,9 @@ Public Class Form1
 
     Private Sub cb_section_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cb_section.SelectedIndexChanged
 
-        ' Close any previous connection
+
         CloseConnection()
 
-        ' Open a new connection to the MySQL database
         OpenConnection()
 
         Try
@@ -303,5 +365,55 @@ Public Class Form1
             ' Close the connection after execution
             CloseConnection()
         End Try
+    End Sub
+
+    Private Sub cmbsearch_TextChanged(sender As Object, e As EventArgs) Handles cmbsearch.TextChanged
+
+        Try
+            con.Close()
+            con.Open()
+
+            ' Modify the query to search for FA NO
+            Dim cmdSearch As New MySqlCommand("SELECT FULLNAME, NO, FANO, FATYPE, SECTION, ITEMDES, DATE, PONO, SINO, AMOUNT, SUPPLIER, QRCODE 
+                                           FROM tblfixedasset 
+                                           WHERE FANO LIKE @searchText", con)
+            cmdSearch.Parameters.AddWithValue("@searchText", "%" & cmbsearch.Text & "%")
+
+            Dim da As New MySqlDataAdapter(cmdSearch)
+            Dim dt As New DataTable
+            da.Fill(dt)
+            datagrid1.DataSource = dt
+
+            Dim cmdSearch1 As New MySqlCommand("SELECT FANO, SERVICEPRO, ACCDATE, PODATE, AMOUNT, SINO 
+                                             FROM tblservices
+                                             WHERE FANO LIKE @searchText", con)
+            cmdSearch1.Parameters.AddWithValue("@searchText", "%" & cmbsearch.Text & "%")
+
+            Dim da1 As New MySqlDataAdapter(cmdSearch1)
+            Dim dt1 As New DataTable
+            da1.Fill(dt1)
+            datagrid2.DataSource = dt1
+
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        Finally
+            con.Close()
+            da.Dispose()
+            da1.Dispose()
+        End Try
+    End Sub
+
+    Private accessGranted As Boolean = False
+
+    Private Sub btn_access_Click(sender As Object, e As EventArgs) Handles btn_access.Click
+        ' Code to grant access, if any
+        accessGranted = True
+        EnableInputFields()
+        MessageBox.Show("Access granted! You can now add services.")
+    End Sub
+
+    Private Sub txt_user_TextChanged(sender As Object, e As EventArgs) Handles txt_user.TextChanged
+
     End Sub
 End Class

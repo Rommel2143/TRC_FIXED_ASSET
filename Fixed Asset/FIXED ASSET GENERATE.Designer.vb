@@ -22,6 +22,7 @@ Partial Class FIXED_ASSET_GENERATE
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.Guna2Panel2 = New Guna.UI2.WinForms.Guna2Panel()
         Me.txt_supplier = New Guna.UI2.WinForms.Guna2TextBox()
         Me.txt_section = New Guna.UI2.WinForms.Guna2TextBox()
@@ -45,11 +46,13 @@ Partial Class FIXED_ASSET_GENERATE
         Me.txt_pono = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
+        Me.Guna2BorderlessForm1 = New Guna.UI2.WinForms.Guna2BorderlessForm(Me.components)
         Me.Guna2Panel2.SuspendLayout()
         Me.SuspendLayout()
         '
         'Guna2Panel2
         '
+        Me.Guna2Panel2.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Guna2Panel2.BorderColor = System.Drawing.Color.Black
         Me.Guna2Panel2.Controls.Add(Me.txt_supplier)
         Me.Guna2Panel2.Controls.Add(Me.txt_section)
@@ -182,9 +185,9 @@ Partial Class FIXED_ASSET_GENERATE
         Me.Label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label17.Location = New System.Drawing.Point(25, 16)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(209, 20)
+        Me.Label17.Size = New System.Drawing.Size(256, 20)
         Me.Label17.TabIndex = 61
-        Me.Label17.Text = "MASTERDATA DETAILS" & Global.Microsoft.VisualBasic.ChrW(9)
+        Me.Label17.Text = "MASTERDATA INFORMATION" & Global.Microsoft.VisualBasic.ChrW(9)
         '
         'txt_itemdes
         '
@@ -420,14 +423,22 @@ Partial Class FIXED_ASSET_GENERATE
         Me.Label10.TabIndex = 39
         Me.Label10.Text = "SI No. :"
         '
+        'Guna2BorderlessForm1
+        '
+        Me.Guna2BorderlessForm1.ContainerControl = Me
+        Me.Guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6R
+        Me.Guna2BorderlessForm1.TransparentWhileDrag = True
+        '
         'FIXED_ASSET_GENERATE
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(927, 529)
         Me.Controls.Add(Me.Guna2Panel2)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "FIXED_ASSET_GENERATE"
         Me.Text = "FIXED_ASSET_GENERATE"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.Guna2Panel2.ResumeLayout(False)
         Me.Guna2Panel2.PerformLayout()
         Me.ResumeLayout(False)
@@ -457,4 +468,5 @@ Partial Class FIXED_ASSET_GENERATE
     Friend WithEvents txt_supplier As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents txt_section As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents txt_fatype As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents Guna2BorderlessForm1 As Guna.UI2.WinForms.Guna2BorderlessForm
 End Class

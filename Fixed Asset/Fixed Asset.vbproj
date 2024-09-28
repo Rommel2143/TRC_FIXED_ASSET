@@ -148,6 +148,12 @@
     <Compile Include="FIXED ASSET GENERATE.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="sub_frame.Designer.vb">
+      <DependentUpon>sub_frame.vb</DependentUpon>
+    </Compile>
+    <Compile Include="sub_frame.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -159,6 +165,12 @@
       <DependentUpon>Login.vb</DependentUpon>
     </Compile>
     <Compile Include="Login.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mainframe.Designer.vb">
+      <DependentUpon>Mainframe.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Mainframe.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Module1.vb" />
@@ -189,11 +201,17 @@
     <EmbeddedResource Include="FIXED ASSET GENERATE.resx">
       <DependentUpon>FIXED ASSET GENERATE.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="sub_frame.resx">
+      <DependentUpon>sub_frame.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mainframe.resx">
+      <DependentUpon>Mainframe.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

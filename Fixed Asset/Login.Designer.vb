@@ -26,6 +26,7 @@ Partial Class Login
         Me.txtbarcode = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.labelerror = New System.Windows.Forms.Label()
         Me.Guna2Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -34,11 +35,12 @@ Partial Class Login
         Me.Guna2Panel1.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Guna2Panel1.BackColor = System.Drawing.Color.Transparent
         Me.Guna2Panel1.BorderRadius = 10
+        Me.Guna2Panel1.Controls.Add(Me.labelerror)
         Me.Guna2Panel1.Controls.Add(Me.txtbarcode)
         Me.Guna2Panel1.Controls.Add(Me.Label2)
         Me.Guna2Panel1.Controls.Add(Me.Label1)
         Me.Guna2Panel1.FillColor = System.Drawing.Color.White
-        Me.Guna2Panel1.Location = New System.Drawing.Point(66, 27)
+        Me.Guna2Panel1.Location = New System.Drawing.Point(131, 57)
         Me.Guna2Panel1.Name = "Guna2Panel1"
         Me.Guna2Panel1.ShadowDecoration.BorderRadius = 15
         Me.Guna2Panel1.ShadowDecoration.Color = System.Drawing.Color.Silver
@@ -87,14 +89,28 @@ Partial Class Login
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Philippines TRC Inc."
         '
+        'labelerror
+        '
+        Me.labelerror.AutoSize = True
+        Me.labelerror.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.labelerror.ForeColor = System.Drawing.Color.Tomato
+        Me.labelerror.Location = New System.Drawing.Point(353, 242)
+        Me.labelerror.Name = "labelerror"
+        Me.labelerror.Size = New System.Drawing.Size(106, 15)
+        Me.labelerror.TabIndex = 23
+        Me.labelerror.Text = "ID not Registered!"
+        Me.labelerror.Visible = False
+        '
         'Login
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(942, 539)
+        Me.ClientSize = New System.Drawing.Size(1109, 603)
         Me.Controls.Add(Me.Guna2Panel1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "Login"
         Me.Text = "Login"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.Guna2Panel1.ResumeLayout(False)
         Me.Guna2Panel1.PerformLayout()
         Me.ResumeLayout(False)
@@ -105,4 +121,5 @@ Partial Class Login
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents txtbarcode As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents labelerror As Label
 End Class
