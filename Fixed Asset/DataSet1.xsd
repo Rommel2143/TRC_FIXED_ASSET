@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="tblfixedasset" msprop:Generator_TableClassName="tblfixedassetDataTable" msprop:Generator_TableVarName="tabletblfixedasset" msprop:Generator_RowChangedName="tblfixedassetRowChanged" msprop:Generator_TablePropName="tblfixedasset" msprop:Generator_RowDeletingName="tblfixedassetRowDeleting" msprop:Generator_RowChangingName="tblfixedassetRowChanging" msprop:Generator_RowEvHandlerName="tblfixedassetRowChangeEventHandler" msprop:Generator_RowDeletedName="tblfixedassetRowDeleted" msprop:Generator_RowClassName="tblfixedassetRow" msprop:Generator_UserTableName="tblfixedasset" msprop:Generator_RowEvArgName="tblfixedassetRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FANO" msprop:Generator_ColumnVarNameInTable="columnFANO" msprop:Generator_ColumnPropNameInRow="FANO" msprop:Generator_ColumnPropNameInTable="FANOColumn" msprop:Generator_UserColumnName="FANO" type="xs:string" minOccurs="0" />
+              <xs:element name="FATYPE" msprop:Generator_ColumnVarNameInTable="columnFATYPE" msprop:Generator_ColumnPropNameInRow="FATYPE" msprop:Generator_ColumnPropNameInTable="FATYPEColumn" msprop:Generator_UserColumnName="FATYPE" type="xs:string" minOccurs="0" />
+              <xs:element name="SECTION" msprop:Generator_ColumnVarNameInTable="columnSECTION" msprop:Generator_ColumnPropNameInRow="SECTION" msprop:Generator_ColumnPropNameInTable="SECTIONColumn" msprop:Generator_UserColumnName="SECTION" type="xs:string" minOccurs="0" />
+              <xs:element name="DATE" msprop:Generator_ColumnVarNameInTable="columnDATE" msprop:Generator_ColumnPropNameInRow="_DATE" msprop:Generator_ColumnPropNameInTable="DATEColumn" msprop:Generator_UserColumnName="DATE" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="PONO" msprop:Generator_ColumnVarNameInTable="columnPONO" msprop:Generator_ColumnPropNameInRow="PONO" msprop:Generator_ColumnPropNameInTable="PONOColumn" msprop:Generator_UserColumnName="PONO" type="xs:string" minOccurs="0" />
+              <xs:element name="SINO" msprop:Generator_ColumnVarNameInTable="columnSINO" msprop:Generator_ColumnPropNameInRow="SINO" msprop:Generator_ColumnPropNameInTable="SINOColumn" msprop:Generator_UserColumnName="SINO" type="xs:string" minOccurs="0" />
+              <xs:element name="QRCODE" msprop:Generator_ColumnVarNameInTable="columnQRCODE" msprop:Generator_ColumnPropNameInRow="QRCODE" msprop:Generator_ColumnPropNameInTable="QRCODEColumn" msprop:Generator_UserColumnName="QRCODE" type="xs:base64Binary" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -2,6 +2,8 @@
 
 Public Class Form1
     Dim secno As Integer
+    Public qrcode As String
+    Public dataid As Integer = 0
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadData()
         LoadData1()
@@ -243,22 +245,7 @@ Public Class Form1
 
 
     Private Sub datagrid1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles datagrid1.CellContentClick
-        If e.RowIndex >= 0 Then
-            Dim row As DataGridViewRow = datagrid1.Rows(e.RowIndex)
-            txt_user.Text = row.Cells("FULLNAME").Value.ToString()
-            txt_no.Text = row.Cells("NO").Value.ToString()
-            txt_fano.Text = row.Cells("FANO").Value.ToString()
-            cb_fatype.Text = row.Cells("FATYPE").Value.ToString()
-            cb_section.Text = row.Cells("SECTION").Value.ToString()
-            txt_itemdes.Text = row.Cells("ITEMDES").Value.ToString()
-            dt_date.Value = Convert.ToDateTime(row.Cells("DATE").Value)
-            txt_pono.Text = row.Cells("PONO").Value.ToString()
-            txt_sino.Text = row.Cells("SINO").Value.ToString()
-            txt_amount.Text = row.Cells("AMOUNT").Value.ToString()
-            cb_supplier.Text = row.Cells("SUPPLIER").Value.ToString()
-            cb_status.Text = row.Cells("STATUS").Value.ToString()
-            txt_remark.Text = row.Cells("REMARK").Value.ToString()
-        End If
+
     End Sub
     Private Sub datagrid2_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles datagrid2.CellContentClick
         If e.RowIndex >= 0 Then
@@ -317,7 +304,6 @@ Public Class Form1
         ClearInputFields1()
         datagrid1.ClearSelection()
         datagrid2.ClearSelection()
-        txt_fano.Text = String.Empty
     End Sub
 
     Private Sub btn_exit_Click(sender As Object, e As EventArgs) Handles btn_exit.Click
@@ -358,6 +344,7 @@ Public Class Form1
             Else
 
             End If
+
 
         Catch ex As Exception
             MessageBox.Show("Error: " & ex.Message)
@@ -416,4 +403,48 @@ Public Class Form1
     Private Sub txt_user_TextChanged(sender As Object, e As EventArgs) Handles txt_user.TextChanged
 
     End Sub
+
+    Private Sub datagrid1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles datagrid1.CellClick
+        If e.RowIndex >= 0 Then
+            Dim row As DataGridViewRow = datagrid1.Rows(e.RowIndex)
+            txt_user.Text = row.Cells("FULLNAME").Value.ToString()
+            txt_no.Text = row.Cells("NO").Value.ToString()
+            txt_fano.Text = row.Cells("FANO").Value.ToString()
+            cb_fatype.Text = row.Cells("FATYPE").Value.ToString()
+            cb_section.Text = row.Cells("SECTION").Value.ToString()
+            txt_itemdes.Text = row.Cells("ITEMDES").Value.ToString()
+            dt_date.Value = Convert.ToDateTime(row.Cells("DATE").Value)
+            txt_pono.Text = row.Cells("PONO").Value.ToString()
+            txt_sino.Text = row.Cells("SINO").Value.ToString()
+            txt_amount.Text = row.Cells("AMOUNT").Value.ToString()
+            cb_supplier.Text = row.Cells("SUPPLIER").Value.ToString()
+            cb_status.Text = row.Cells("STATUS").Value.ToString()
+            txt_remark.Text = row.Cells("REMARK").Value.ToString()
+            qrcode = row.Cells("QRCODE").Value.ToString()
+            dataid = row.Cells("id").Value.ToString()
+
+
+        End If
+    End Sub
+
+    Private Sub btn_print_Click(sender As Object, e As EventArgs) Handles btn_print.Click
+        If dataid = 0 Then
+            MessageBox.Show("Please select item first")
+        Else
+            Dim print_s As New print_sticker
+            With print_s
+                .fano = txt_fano.Text
+                .fatype = cb_fatype.Text
+                .section = cb_section.Text
+                .date_ac = dt_date.Value
+                .pono = txt_pono.Text
+                .sino = txt_sino.Text
+                .qrcode = qrcode
+                .ShowDialog()
+                .BringToFront()
+            End With
+
+        End If
+    End Sub
+
 End Class

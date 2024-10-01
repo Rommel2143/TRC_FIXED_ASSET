@@ -57,6 +57,7 @@ Partial Class Form1
         Me.Guna2Panel1 = New Guna.UI2.WinForms.Guna2Panel()
         Me.btn_access = New Guna.UI2.WinForms.Guna2Button()
         Me.cb_servicepro = New Guna.UI2.WinForms.Guna2ComboBox()
+        Me.btnaddservice = New Guna.UI2.WinForms.Guna2Button()
         Me.dt_podate = New Guna.UI2.WinForms.Guna2DateTimePicker()
         Me.dt_accomdate = New Guna.UI2.WinForms.Guna2DateTimePicker()
         Me.txt_sino1 = New Guna.UI2.WinForms.Guna2TextBox()
@@ -67,6 +68,10 @@ Partial Class Form1
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.Guna2Panel2 = New Guna.UI2.WinForms.Guna2Panel()
+        Me.txt_remark = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.Label21 = New System.Windows.Forms.Label()
+        Me.cb_status = New Guna.UI2.WinForms.Guna2ComboBox()
+        Me.Label20 = New System.Windows.Forms.Label()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.txt_user = New Guna.UI2.WinForms.Guna2TextBox()
         Me.dt_date = New Guna.UI2.WinForms.Guna2DateTimePicker()
@@ -75,14 +80,10 @@ Partial Class Form1
         Me.Label18 = New System.Windows.Forms.Label()
         Me.btn_cancel = New Guna.UI2.WinForms.Guna2Button()
         Me.btn_exit = New Guna.UI2.WinForms.Guna2Button()
-        Me.btnaddservice = New Guna.UI2.WinForms.Guna2Button()
         Me.datagrid2 = New Guna.UI2.WinForms.Guna2DataGridView()
         Me.cmbsearch = New Guna.UI2.WinForms.Guna2TextBox()
-        Me.cb_status = New Guna.UI2.WinForms.Guna2ComboBox()
-        Me.Label20 = New System.Windows.Forms.Label()
-        Me.Label21 = New System.Windows.Forms.Label()
-        Me.txt_remark = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2Panel3 = New Guna.UI2.WinForms.Guna2Panel()
+        Me.btn_print = New Guna.UI2.WinForms.Guna2Button()
         CType(Me.datagrid1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Guna2Panel1.SuspendLayout()
         Me.Guna2Panel2.SuspendLayout()
@@ -529,6 +530,22 @@ Partial Class Form1
         Me.cb_servicepro.Size = New System.Drawing.Size(201, 36)
         Me.cb_servicepro.TabIndex = 152
         '
+        'btnaddservice
+        '
+        Me.btnaddservice.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnaddservice.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.btnaddservice.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.btnaddservice.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.btnaddservice.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.btnaddservice.FillColor = System.Drawing.Color.DodgerBlue
+        Me.btnaddservice.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.btnaddservice.ForeColor = System.Drawing.Color.White
+        Me.btnaddservice.Location = New System.Drawing.Point(494, 249)
+        Me.btnaddservice.Name = "btnaddservice"
+        Me.btnaddservice.Size = New System.Drawing.Size(79, 37)
+        Me.btnaddservice.TabIndex = 190
+        Me.btnaddservice.Text = "ADD SERVICES"
+        '
         'dt_podate
         '
         Me.dt_podate.BorderRadius = 2
@@ -688,6 +705,63 @@ Partial Class Form1
         Me.Guna2Panel2.Size = New System.Drawing.Size(724, 380)
         Me.Guna2Panel2.TabIndex = 62
         '
+        'txt_remark
+        '
+        Me.txt_remark.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txt_remark.DefaultText = ""
+        Me.txt_remark.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.txt_remark.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.txt_remark.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.txt_remark.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.txt_remark.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.txt_remark.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.txt_remark.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.txt_remark.Location = New System.Drawing.Point(498, 338)
+        Me.txt_remark.Name = "txt_remark"
+        Me.txt_remark.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
+        Me.txt_remark.PlaceholderText = "Enter No.."
+        Me.txt_remark.SelectedText = ""
+        Me.txt_remark.Size = New System.Drawing.Size(201, 36)
+        Me.txt_remark.TabIndex = 155
+        '
+        'Label21
+        '
+        Me.Label21.AutoSize = True
+        Me.Label21.BackColor = System.Drawing.Color.White
+        Me.Label21.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label21.Location = New System.Drawing.Point(382, 344)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(73, 20)
+        Me.Label21.TabIndex = 154
+        Me.Label21.Text = "Remark :"
+        '
+        'cb_status
+        '
+        Me.cb_status.BackColor = System.Drawing.Color.Transparent
+        Me.cb_status.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
+        Me.cb_status.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cb_status.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.cb_status.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.cb_status.Font = New System.Drawing.Font("Segoe UI", 10.0!)
+        Me.cb_status.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
+        Me.cb_status.ItemHeight = 30
+        Me.cb_status.Items.AddRange(New Object() {"Active", "Not Actice"})
+        Me.cb_status.Location = New System.Drawing.Point(498, 291)
+        Me.cb_status.Name = "cb_status"
+        Me.cb_status.Size = New System.Drawing.Size(201, 36)
+        Me.cb_status.TabIndex = 153
+        '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.BackColor = System.Drawing.Color.White
+        Me.Label20.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label20.Location = New System.Drawing.Point(382, 297)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(64, 20)
+        Me.Label20.TabIndex = 152
+        Me.Label20.Text = "Status :"
+        '
         'Label19
         '
         Me.Label19.AutoSize = True
@@ -800,22 +874,6 @@ Partial Class Form1
         Me.btn_exit.TabIndex = 189
         Me.btn_exit.Text = "EXIT"
         '
-        'btnaddservice
-        '
-        Me.btnaddservice.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnaddservice.DisabledState.BorderColor = System.Drawing.Color.DarkGray
-        Me.btnaddservice.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
-        Me.btnaddservice.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
-        Me.btnaddservice.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.btnaddservice.FillColor = System.Drawing.Color.DodgerBlue
-        Me.btnaddservice.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.btnaddservice.ForeColor = System.Drawing.Color.White
-        Me.btnaddservice.Location = New System.Drawing.Point(494, 249)
-        Me.btnaddservice.Name = "btnaddservice"
-        Me.btnaddservice.Size = New System.Drawing.Size(79, 37)
-        Me.btnaddservice.TabIndex = 190
-        Me.btnaddservice.Text = "ADD SERVICES"
-        '
         'datagrid2
         '
         Me.datagrid2.AccessibleRole = System.Windows.Forms.AccessibleRole.Window
@@ -909,65 +967,9 @@ Partial Class Form1
         Me.cmbsearch.Size = New System.Drawing.Size(224, 32)
         Me.cmbsearch.TabIndex = 208
         '
-        'cb_status
-        '
-        Me.cb_status.BackColor = System.Drawing.Color.Transparent
-        Me.cb_status.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
-        Me.cb_status.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cb_status.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.cb_status.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.cb_status.Font = New System.Drawing.Font("Segoe UI", 10.0!)
-        Me.cb_status.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
-        Me.cb_status.ItemHeight = 30
-        Me.cb_status.Items.AddRange(New Object() {"Active", "Not Actice"})
-        Me.cb_status.Location = New System.Drawing.Point(498, 291)
-        Me.cb_status.Name = "cb_status"
-        Me.cb_status.Size = New System.Drawing.Size(201, 36)
-        Me.cb_status.TabIndex = 153
-        '
-        'Label20
-        '
-        Me.Label20.AutoSize = True
-        Me.Label20.BackColor = System.Drawing.Color.White
-        Me.Label20.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label20.Location = New System.Drawing.Point(382, 297)
-        Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(64, 20)
-        Me.Label20.TabIndex = 152
-        Me.Label20.Text = "Status :"
-        '
-        'Label21
-        '
-        Me.Label21.AutoSize = True
-        Me.Label21.BackColor = System.Drawing.Color.White
-        Me.Label21.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label21.Location = New System.Drawing.Point(382, 344)
-        Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(73, 20)
-        Me.Label21.TabIndex = 154
-        Me.Label21.Text = "Remark :"
-        '
-        'txt_remark
-        '
-        Me.txt_remark.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.txt_remark.DefaultText = ""
-        Me.txt_remark.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.txt_remark.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.txt_remark.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.txt_remark.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.txt_remark.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.txt_remark.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.txt_remark.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.txt_remark.Location = New System.Drawing.Point(498, 338)
-        Me.txt_remark.Name = "txt_remark"
-        Me.txt_remark.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
-        Me.txt_remark.PlaceholderText = "Enter No.."
-        Me.txt_remark.SelectedText = ""
-        Me.txt_remark.Size = New System.Drawing.Size(201, 36)
-        Me.txt_remark.TabIndex = 155
-        '
         'Guna2Panel3
         '
+        Me.Guna2Panel3.Controls.Add(Me.btn_print)
         Me.Guna2Panel3.Controls.Add(Me.btn_exit)
         Me.Guna2Panel3.Controls.Add(Me.cmbsearch)
         Me.Guna2Panel3.Controls.Add(Me.btn_cancel)
@@ -980,6 +982,22 @@ Partial Class Form1
         Me.Guna2Panel3.Name = "Guna2Panel3"
         Me.Guna2Panel3.Size = New System.Drawing.Size(1346, 442)
         Me.Guna2Panel3.TabIndex = 209
+        '
+        'btn_print
+        '
+        Me.btn_print.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.btn_print.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.btn_print.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.btn_print.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.btn_print.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.btn_print.FillColor = System.Drawing.Color.DodgerBlue
+        Me.btn_print.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.btn_print.ForeColor = System.Drawing.Color.White
+        Me.btn_print.Location = New System.Drawing.Point(974, 335)
+        Me.btn_print.Name = "btn_print"
+        Me.btn_print.Size = New System.Drawing.Size(79, 37)
+        Me.btn_print.TabIndex = 209
+        Me.btn_print.Text = "PRINT"
         '
         'Form1
         '
@@ -1059,4 +1077,5 @@ Partial Class Form1
     Friend WithEvents cb_status As Guna.UI2.WinForms.Guna2ComboBox
     Friend WithEvents Label20 As Label
     Friend WithEvents Guna2Panel3 As Guna.UI2.WinForms.Guna2Panel
+    Friend WithEvents btn_print As Guna.UI2.WinForms.Guna2Button
 End Class
