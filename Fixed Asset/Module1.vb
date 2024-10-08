@@ -2,7 +2,8 @@
 
 Module Module1
     Public Function connection() As MySqlConnection
-        Return New MySqlConnection("server=localhost;port=3306;username=root;password=;database=trcdatabase")
+        '  Return New MySqlConnection("server=localhost;port=3306;username=root;password=;database=trcdatabase")
+        Return New MySqlConnection("server=PTI-032;user id=inventoryf2;password=admin123@;database=trcsystem")
     End Function
 
     Public con As MySqlConnection = connection()
@@ -11,6 +12,7 @@ Module Module1
     Public dt As New DataTable
     Public dt1 As New DataTable
     Public da1 As New MySqlDataAdapter
+    Public dr As MySqlDataReader
 
 
     Public Sub OpenConnection()
@@ -42,6 +44,19 @@ Module Module1
             .Show()
         End With
     End Sub
-
+    Public Sub cmb_display(sql As String, column As String, cmb As Guna.UI2.WinForms.Guna2ComboBox)
+        Try
+            con.Close()
+            con.Open()
+            Dim cmdselect As New MySqlCommand(sql, con)
+            dr = cmdselect.ExecuteReader
+            cmb.Items.Clear()
+            While (dr.Read())
+                cmb.Items.Add(dr.GetString(column))
+            End While
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
+    End Sub
 
 End Module

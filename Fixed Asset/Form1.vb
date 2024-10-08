@@ -1,4 +1,5 @@
 ﻿Imports MySql.Data.MySqlClient
+Imports System.Globalization
 
 Public Class Form1
     Dim secno As Integer
@@ -12,7 +13,10 @@ Public Class Form1
         LoadComboBoxData()
         DisableInputFields()
         cb_status.Text = "Active"
+
+
     End Sub
+
 
     Private Sub btn_save_Click(sender As Object, e As EventArgs) Handles btn_save.Click
 
@@ -22,8 +26,8 @@ Public Class Form1
 
             OpenConnection()
             cmd.Connection = con
-            cmd.CommandText = "INSERT INTO tblfixedasset (FULLNAME, NO, FANO, FATYPE, SECTION, ITEMDES, DATE, PONO, SINO, AMOUNT, SUPPLIER, STATUS, REMARK, QRCODE) 
-                                VALUES (@fullname, @no, @fano, @fanotype, @section, @itemdes, @date, @pono, @sino, @amount, @supplier, @status, @remark, @qrcode)"
+            cmd.CommandText = "INSERT INTO tblfixedasset (FULLNAME, NO, FANO, FATYPE, SECTION, ITEMDES, DATE, PONO, SINO, AMOUNT,CURRENCY, SUPPLIER, STATUS, REMARK, QRCODE) 
+                                VALUES (@fullname, @no, @fano, @fanotype, @section, @itemdes, @date, @pono, @sino, @amount,@currency, @supplier, @status, @remark, @qrcode)"
             cmd.Parameters.Clear()
             cmd.Parameters.AddWithValue("@fullname", txt_user.Text)
             cmd.Parameters.AddWithValue("@no", txt_no.Text)
@@ -34,7 +38,8 @@ Public Class Form1
             cmd.Parameters.AddWithValue("@date", dt_date.Value.ToString("yyyy-MM-dd"))
             cmd.Parameters.AddWithValue("@pono", txt_pono.Text)
             cmd.Parameters.AddWithValue("@sino", txt_sino.Text)
-            cmd.Parameters.AddWithValue("@amount", txt_amount.Text)
+            cmd.Parameters.AddWithValue("@amount", Convert.ToDecimal(txt_amount.Text))
+            cmd.Parameters.AddWithValue("@currency", boxc.Text)
             cmd.Parameters.AddWithValue("@supplier", cb_supplier.Text)
             cmd.Parameters.AddWithValue("@status", cb_status.Text)
             cmd.Parameters.AddWithValue("@remark", txt_remark.Text)
@@ -99,16 +104,18 @@ Public Class Form1
         Try
             OpenConnection()
             cmd.Connection = con
-            cmd.CommandText = "INSERT INTO tblservices(FANO,SERVICEPRO, ACCDATE, PODATE, AMOUNT, SINO) VALUES (@fano, @servicepro, @accdate, @podate, @amount, @sino)"
+            cmd.CommandText = "INSERT INTO tblservices(FANO,SERVICEPRO, ACCDATE, PODATE,CURRENCY, AMOUNT, SINO, REMARKS) VALUES (@fano, @servicepro, @accdate, @po, @currency,@amount, @sino, @rema)"
 
 
             cmd.Parameters.Clear()
             cmd.Parameters.AddWithValue("@fano", txt_fano.Text)
             cmd.Parameters.AddWithValue("@servicepro", cb_servicepro.Text)
             cmd.Parameters.AddWithValue("@accdate", dt_accomdate.Value.ToString("yyyy-MM-dd"))
-            cmd.Parameters.AddWithValue("@podate", dt_podate.Value.ToString("yyyy-MM-dd"))
+            cmd.Parameters.AddWithValue("@po", txtpo.Text)
+            cmd.Parameters.AddWithValue("@currency", boxc1.Text)
             cmd.Parameters.AddWithValue("@amount", txt_amount1.Text)
             cmd.Parameters.AddWithValue("@sino", txt_sino1.Text)
+            cmd.Parameters.AddWithValue("@rema", txtrema.Text)
             cmd.ExecuteNonQuery()
 
             MessageBox.Show("Record added successfully!")
@@ -137,9 +144,9 @@ Public Class Form1
     Private Sub ClearInputFields1()
         cb_servicepro.SelectedIndex = -1
         dt_accomdate.Value = DateTime.Now
-        dt_podate.Value = DateTime.Now
         txt_amount1.Clear()
         txt_sino1.Clear()
+        txtpo.Clear()
     End Sub
     ' This method enables input fields
     Private Sub EnableInputFields()
@@ -147,7 +154,7 @@ Public Class Form1
         txt_amount1.Enabled = True
         txt_sino1.Enabled = True
         dt_accomdate.Enabled = True
-        dt_podate.Enabled = True
+
     End Sub
 
     ' This method disables input fields
@@ -156,12 +163,13 @@ Public Class Form1
         txt_amount1.Enabled = False
         txt_sino1.Enabled = False
         dt_accomdate.Enabled = False
-        dt_podate.Enabled = False
+
     End Sub
 
 
     Private Sub LoadData()
         Try
+            CloseConnection()
             OpenConnection()
             dt.Clear()
             Dim query As String = "SELECT * FROM tblfixedasset"
@@ -172,30 +180,32 @@ Public Class Form1
             If datagrid1.Columns.Contains("id") Then
                 datagrid1.Columns("id").Visible = False
             End If
-        Catch ex As Exception
-            MessageBox.Show("Error loading data: " & ex.Message)
-        Finally
-            CloseConnection()
-        End Try
-    End Sub
-    Private Sub LoadData1()
-        Try
-            OpenConnection()
-            dt1.Clear()
-            Dim query As String = "SELECT * FROM tblservices"
-            da = New MySqlDataAdapter(query, con)
-            da.Fill(dt1)
-            datagrid2.DataSource = dt1
 
-            If datagrid2.Columns.Contains("id") Then
-                datagrid2.Columns("id").Visible = False
-            End If
+            CloseConnection()
+
+            OpenConnection()
+
+            ' Prepare the SQL query to fetch data based on the selected section
+            Dim cmdSelect As New MySqlCommand("SELECT max(id)  FROM tblfixedasset", con)
+                cmdSelect.Parameters.AddWithValue("@section", cb_section.Text)
+
+                ' Execute the command and read the data
+                Dim dr As MySqlDataReader = cmdSelect.ExecuteReader()
+
+                If dr.Read() Then
+                    txt_no.Text = dr.GetInt32(0) + 1
+
+                Else
+
+                End If
+
         Catch ex As Exception
             MessageBox.Show("Error loading data: " & ex.Message)
         Finally
             CloseConnection()
         End Try
     End Sub
+
     Private Sub UpdateRecordWithTransaction()
         If datagrid1.SelectedRows.Count = 0 Then
             MessageBox.Show("Please select a record to update.")
@@ -210,7 +220,7 @@ Public Class Form1
             con.Close()
             con.Open()
 
-            Using cmd As New MySqlCommand("UPDATE tblfixedasset SET FULLNAME=@fullname, NO=@no, FANO=@fano, FATYPE=@fanotype, SECTION=@section, ITEMDES=@itemdes, DATE=@date, PONO=@pono, SINO=@sino, AMOUNT=@amount, SUPPLIER=@supplier, STATUS=@status, REMARK=@remark WHERE id=@id", con)
+            Using cmd As New MySqlCommand("UPDATE tblfixedasset SET FULLNAME=@fullname, NO=@no, FANO=@fano, FATYPE=@fanotype, SECTION=@section, ITEMDES=@itemdes, DATE=@date, PONO=@pono, SINO=@sino, AMOUNT=@amount, CURRENCY=@currency, SUPPLIER=@supplier, STATUS=@status, REMARK=@remark WHERE id=@id", con)
                 cmd.Parameters.Clear()
                 cmd.Parameters.AddWithValue("@id", id)
                 cmd.Parameters.AddWithValue("@fullname", txt_user.Text)
@@ -223,6 +233,7 @@ Public Class Form1
                 cmd.Parameters.AddWithValue("@pono", txt_pono.Text)
                 cmd.Parameters.AddWithValue("@sino", txt_sino.Text)
                 cmd.Parameters.AddWithValue("@amount", txt_amount.Text)
+                cmd.Parameters.AddWithValue("@currency", boxc.Text)
                 cmd.Parameters.AddWithValue("@supplier", cb_supplier.Text)
                 cmd.Parameters.AddWithValue("@status", cb_status.Text)
                 cmd.Parameters.AddWithValue("@remark", txt_remark.Text)
@@ -253,43 +264,55 @@ Public Class Form1
             txt_fano.Text = row.Cells("FANO").Value.ToString()
             cb_servicepro.Text = row.Cells("SERVICEPRO").Value.ToString()
             dt_accomdate.Value = Convert.ToDateTime(row.Cells("ACCDATE").Value)
-            dt_podate.Value = Convert.ToDateTime(row.Cells("PODATE").Value)
+            txtpo.Text = row.Cells("PODATE").Value.ToString()
+            boxc1.Text = row.Cells("CURRENCY").Value.ToString()
             txt_amount1.Text = row.Cells("AMOUNT").Value.ToString()
             txt_sino1.Text = row.Cells("SINO").Value.ToString()
+            txtrema.Text = row.Cells("REMARKS").Value.ToString()
         End If
     End Sub
 
-    Private Sub LoadComboBoxData()
+    Public Sub LoadComboBoxData()
         Try
-            CloseConnection()
-            OpenConnection()
+            'EDIT : more efficient way to add items in combobox and it prevents duplicates
+            'EDIT : "DISTINCT" function is used to remove duplicates in one column
+            cmb_display("SELECT DISTINCT(selection) FROM cbmasterlist WHERE destination='Supplier'", "selection", cb_supplier)
+            cmb_display("SELECT DISTINCT(selection) FROM cbmasterlist WHERE destination='FA Type'", "selection", cb_fatype)
+            cmb_display("SELECT DISTINCT(selection) FROM cbmasterlist WHERE destination='Service Provider'", "selection", cb_servicepro)
+            cmb_display("SELECT DISTINCT(selection) FROM tblcn", "selection", cb_section)
 
-            ' Load FA Type, Supplier, and Service Provider from cbmasterlist
-            Dim query As String = "SELECT selection, destination FROM cbmasterlist WHERE destination IN ('FA Type', 'Supplier', 'Service Provider')"
-            Dim cmd As New MySqlCommand(query, con)
-            Dim reader As MySqlDataReader = cmd.ExecuteReader()
 
-            While reader.Read()
-                Select Case reader("destination").ToString()
-                    Case "FA Type"
-                        cb_fatype.Items.Add(reader("selection").ToString())
-                    Case "Supplier"
-                        cb_supplier.Items.Add(reader("selection").ToString())
-                    Case "Service Provider"
-                        cb_servicepro.Items.Add(reader("selection").ToString())
-                End Select
-            End While
-            reader.Close()
+
+            'CloseConnection()
+            'OpenConnection()
+
+            '' Load FA Type, Supplier, and Service Provider from cbmasterlist
+            'Dim query As String = "SELECT selection, destination FROM cbmasterlist WHERE destination IN ('FA Type', 'Supplier', 'Service Provider')"
+            'Dim cmd As New MySqlCommand(query, con)
+            'Dim reader As MySqlDataReader = cmd.ExecuteReader()
+
+            'While reader.Read()
+            '    Select Case reader("destination").ToString()
+            '        Case "FA Type"
+            '            cb_fatype.Items.Add(reader("selection").ToString())
+            '        Case "Supplier"
+            '            cb_section.Items.Clear()
+            '            cb_supplier.Items.Add(reader("selection").ToString())
+            '        Case "Service Provider"
+            '            cb_servicepro.Items.Add(reader("selection").ToString())
+            '    End Select
+            'End While
+            'reader.Close()
 
             ' Load Section from tblcn
-            Dim sectionQuery As String = "SELECT selection FROM tblcn" ' Adjust 'selection' to the actual column name if necessary
-            Dim sectionCmd As New MySqlCommand(sectionQuery, con)
-            Dim sectionReader As MySqlDataReader = sectionCmd.ExecuteReader()
+            'Dim sectionQuery As String = "SELECT selection FROM tblcn" ' Adjust 'selection' to the actual column name if necessary
+            'Dim sectionCmd As New MySqlCommand(sectionQuery, con)
+            'Dim sectionReader As MySqlDataReader = sectionCmd.ExecuteReader()
 
-            While sectionReader.Read()
-                cb_section.Items.Add(sectionReader("selection").ToString()) ' Adjust 'selection' to the actual column name if necessary
-            End While
-            sectionReader.Close()
+            'While sectionReader.Read()
+            '    cb_section.Items.Add(sectionReader("selection").ToString()) ' Adjust 'selection' to the actual column name if necessary
+            'End While
+            'sectionReader.Close()
 
         Catch ex As Exception
             MessageBox.Show("Error loading combo box data: " & ex.Message)
@@ -314,44 +337,7 @@ Public Class Form1
     Private Sub cb_section_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cb_section.SelectedIndexChanged
 
 
-        CloseConnection()
 
-        OpenConnection()
-
-        Try
-            ' Prepare the SQL query to fetch data based on the selected section
-            Dim cmdSelect As New MySqlCommand("SELECT secno, secchar FROM tblcn WHERE selection=@section", con)
-            cmdSelect.Parameters.AddWithValue("@section", cb_section.Text)
-
-            ' Execute the command and read the data
-            Dim dr As MySqlDataReader = cmdSelect.ExecuteReader()
-
-            If dr.Read() Then
-                ' Fetch secno and secchar from the result
-                secno = Convert.ToInt32(dr("secno"))
-                Dim sechar As String = dr("secchar").ToString()
-
-                ' Increment secno
-                secno += 1
-
-                ' Format the new secno as 5 digits and assign to txt_fano
-                txt_fano.Text = sechar & "-" & secno.ToString("00000")
-
-                ' Close the reader before updating the database
-                dr.Close()
-
-
-            Else
-
-            End If
-
-
-        Catch ex As Exception
-            MessageBox.Show("Error: " & ex.Message)
-        Finally
-            ' Close the connection after execution
-            CloseConnection()
-        End Try
     End Sub
 
     Private Sub cmbsearch_TextChanged(sender As Object, e As EventArgs) Handles cmbsearch.TextChanged
@@ -361,7 +347,7 @@ Public Class Form1
             con.Open()
 
             ' Modify the query to search for FA NO
-            Dim cmdSearch As New MySqlCommand("SELECT FULLNAME, NO, FANO, FATYPE, SECTION, ITEMDES, DATE, PONO, SINO, AMOUNT, SUPPLIER, QRCODE 
+            Dim cmdSearch As New MySqlCommand("SELECT *
                                            FROM tblfixedasset 
                                            WHERE FANO LIKE @searchText", con)
             cmdSearch.Parameters.AddWithValue("@searchText", "%" & cmbsearch.Text & "%")
@@ -371,7 +357,7 @@ Public Class Form1
             da.Fill(dt)
             datagrid1.DataSource = dt
 
-            Dim cmdSearch1 As New MySqlCommand("SELECT FANO, SERVICEPRO, ACCDATE, PODATE, AMOUNT, SINO 
+            Dim cmdSearch1 As New MySqlCommand("SELECT *
                                              FROM tblservices
                                              WHERE FANO LIKE @searchText", con)
             cmdSearch1.Parameters.AddWithValue("@searchText", "%" & cmbsearch.Text & "%")
@@ -400,9 +386,6 @@ Public Class Form1
         MessageBox.Show("Access granted! You can now add services.")
     End Sub
 
-    Private Sub txt_user_TextChanged(sender As Object, e As EventArgs) Handles txt_user.TextChanged
-
-    End Sub
 
     Private Sub datagrid1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles datagrid1.CellClick
         If e.RowIndex >= 0 Then
@@ -416,14 +399,13 @@ Public Class Form1
             dt_date.Value = Convert.ToDateTime(row.Cells("DATE").Value)
             txt_pono.Text = row.Cells("PONO").Value.ToString()
             txt_sino.Text = row.Cells("SINO").Value.ToString()
+            boxc.Text = row.Cells("CURRENCY").Value.ToString()
             txt_amount.Text = row.Cells("AMOUNT").Value.ToString()
             cb_supplier.Text = row.Cells("SUPPLIER").Value.ToString()
             cb_status.Text = row.Cells("STATUS").Value.ToString()
             txt_remark.Text = row.Cells("REMARK").Value.ToString()
             qrcode = row.Cells("QRCODE").Value.ToString()
             dataid = row.Cells("id").Value.ToString()
-
-
         End If
     End Sub
 
@@ -447,4 +429,108 @@ Public Class Form1
         End If
     End Sub
 
+    Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
+        add_supplier.ShowDialog()
+        add_supplier.BringToFront()
+    End Sub
+
+    Private Sub Guna2Button2_Click(sender As Object, e As EventArgs) Handles Guna2Button2.Click
+        add_provider.ShowDialog()
+        add_provider.BringToFront()
+    End Sub
+
+    Private Sub txt_amount_TextChanged(sender As Object, e As EventArgs) Handles txt_amount.TextChanged, txt_amount1.TextChanged
+        Dim textBox As Guna.UI2.WinForms.Guna2TextBox = DirectCast(sender, Guna.UI2.WinForms.Guna2TextBox)
+
+
+        Dim numericText As String = New String(textBox.Text.Where(Function(c) Char.IsDigit(c) Or c = "."c).ToArray())
+
+        ' Remove existing event handler to prevent infinite loop
+        RemoveHandler textBox.TextChanged, AddressOf txt_amount_TextChanged
+
+        ' Format the numeric text as currency
+        If Decimal.TryParse(numericText, NumberStyles.Any, CultureInfo.InvariantCulture, Nothing) Then
+            Dim formattedText As String = String.Format(CultureInfo.CurrentCulture, "{0:N0}", Convert.ToDecimal(numericText))
+            textBox.Text = formattedText
+            ' Move the cursor to the end of the text
+            textBox.SelectionStart = textBox.Text.Length
+        End If
+
+        ' Re-add the event handler
+        AddHandler textBox.TextChanged, AddressOf txt_amount_TextChanged
+    End Sub
+    Private Sub LoadData1()
+        Try
+            OpenConnection()
+            dt1.Clear()
+            Dim query As String = "SELECT `ID`, `FANO`, `SERVICEPRO`, `ACCDATE`, `PODATE`, `CURRENCY`, `AMOUNT`, `SINO`, `REMARKS` FROM tblservices"
+            da = New MySqlDataAdapter(query, con)
+            da.Fill(dt1)
+            datagrid2.DataSource = dt1
+
+            If datagrid2.Columns.Contains("id") Then
+                datagrid2.Columns("id").Visible = False
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Error loading data: " & ex.Message)
+        Finally
+            CloseConnection()
+        End Try
+    End Sub
+
+    Private Sub txt_amount_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txt_amount.KeyPress, txt_amount1.KeyPress
+        If Not Char.IsDigit(e.KeyChar) AndAlso Not Char.IsControl(e.KeyChar) Then
+            e.Handled = True ' Discard the key press
+        End If
+    End Sub
+
+    Private Sub dt_date_ValueChanged(sender As Object, e As EventArgs) Handles dt_date.ValueChanged
+        CloseConnection()
+
+        OpenConnection()
+
+        Try
+            ' Prepare the SQL query to fetch data based on the selected section
+            Dim cmdSelect As New MySqlCommand("SELECT secno, secchar FROM tblcn WHERE selection=@section", con)
+            cmdSelect.Parameters.AddWithValue("@section", cb_section.Text)
+
+            ' Execute the command and read the data
+            Dim dr As MySqlDataReader = cmdSelect.ExecuteReader()
+
+            If dr.Read() Then
+                ' Fetch secno and secchar from the result
+                secno = Convert.ToInt32(dr("secno"))
+                Dim sechar As String = dr("secchar").ToString()
+
+                ' Increment secno
+                secno += 1
+
+                ' Format the new secno as 5 digits and assign to txt_fano
+                txt_fano.Text = sechar & "-" & dt_date.Value.ToString("yyyy") & "-" & secno.ToString("00000")
+
+                ' Close the reader before updating the database
+                dr.Close()
+
+
+            Else
+
+            End If
+
+
+        Catch ex As Exception
+            MessageBox.Show("Error: " & ex.Message)
+        Finally
+            ' Close the connection after execution
+            CloseConnection()
+        End Try
+    End Sub
+
+    Private Sub Guna2Panel3_Paint(sender As Object, e As PaintEventArgs) Handles Guna2Panel3.Paint
+
+    End Sub
+
+    Private Sub Guna2Button3_Click(sender As Object, e As EventArgs) Handles Guna2Button3.Click
+        add_type.ShowDialog()
+        add_type.BringToFront()
+    End Sub
 End Class

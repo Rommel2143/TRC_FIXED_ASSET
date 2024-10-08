@@ -32,7 +32,7 @@ Public Class Login
 
                     Dim fullname As String = dr("FULLNAME").ToString()
 
-                    display_form(New Form1)
+                    display_form(Form1)
                     Form1.SetFullname(fullname)
 
                     Me.Hide()
