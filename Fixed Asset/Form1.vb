@@ -137,6 +137,7 @@ Public Class Form1
         dt_date.Value = DateTime.Now
         txt_pono.Clear()
         txt_sino.Clear()
+        boxc.SelectedIndex = -1
         txt_amount.Clear()
         cb_supplier.SelectedIndex = -1
         txt_remark.Clear()
@@ -186,8 +187,8 @@ Public Class Form1
             OpenConnection()
 
             ' Prepare the SQL query to fetch data based on the selected section
-            Dim cmdSelect As New MySqlCommand("SELECT max(id)  FROM tblfixedasset", con)
-                cmdSelect.Parameters.AddWithValue("@section", cb_section.Text)
+            Dim cmdSelect As New MySqlCommand("SELECT COUNT(id)  FROM tblfixedasset", con)
+            cmdSelect.Parameters.AddWithValue("@section", cb_section.Text)
 
                 ' Execute the command and read the data
                 Dim dr As MySqlDataReader = cmdSelect.ExecuteReader()
@@ -232,7 +233,7 @@ Public Class Form1
                 cmd.Parameters.AddWithValue("@date", dt_date.Value.ToString("yyyy-MM-dd"))
                 cmd.Parameters.AddWithValue("@pono", txt_pono.Text)
                 cmd.Parameters.AddWithValue("@sino", txt_sino.Text)
-                cmd.Parameters.AddWithValue("@amount", txt_amount.Text)
+                cmd.Parameters.AddWithValue("@amount", Convert.ToDecimal(txt_amount.Text))
                 cmd.Parameters.AddWithValue("@currency", boxc.Text)
                 cmd.Parameters.AddWithValue("@supplier", cb_supplier.Text)
                 cmd.Parameters.AddWithValue("@status", cb_status.Text)
@@ -250,8 +251,10 @@ Public Class Form1
 
     Private Sub btn_edit_Click(sender As Object, e As EventArgs) Handles btn_edit.Click
         UpdateRecordWithTransaction()
-        LoadData()
         ClearInputFields()
+        LoadData()
+
+        datagrid1.ClearSelection()
     End Sub
 
 
@@ -322,12 +325,12 @@ Public Class Form1
     End Sub
 
 
-    Private Sub btn_cancel_Click(sender As Object, e As EventArgs) Handles btn_cancel.Click
-        ClearInputFields()
-        ClearInputFields1()
-        datagrid1.ClearSelection()
-        datagrid2.ClearSelection()
-    End Sub
+    'Private Sub btn_cancel_Click(sender As Object, e As EventArgs) Handles btn_cancel.Click
+    '    ClearInputFields()
+    '    ClearInputFields1()
+    '    datagrid1.ClearSelection()
+    '    datagrid2.ClearSelection()
+    'End Sub
 
     Private Sub btn_exit_Click(sender As Object, e As EventArgs) Handles btn_exit.Click
         Dim result As DialogResult = MessageBox.Show("Are you sure you want to exit?", "Confirm Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
@@ -533,4 +536,6 @@ Public Class Form1
         add_type.ShowDialog()
         add_type.BringToFront()
     End Sub
+
+
 End Class
