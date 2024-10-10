@@ -144,6 +144,7 @@ Public Class Form1
     End Sub
     Private Sub ClearInputFields1()
         cb_servicepro.SelectedIndex = -1
+        boxc1.SelectedIndex = -1
         dt_accomdate.Value = DateTime.Now
         txt_amount1.Clear()
         txt_sino1.Clear()
@@ -152,6 +153,7 @@ Public Class Form1
     ' This method enables input fields
     Private Sub EnableInputFields()
         cb_servicepro.Enabled = True
+        boxc1.Enabled = True
         txt_amount1.Enabled = True
         txt_sino1.Enabled = True
         dt_accomdate.Enabled = True
@@ -161,6 +163,7 @@ Public Class Form1
     ' This method disables input fields
     Private Sub DisableInputFields()
         cb_servicepro.Enabled = False
+        boxc1.Enabled = False
         txt_amount1.Enabled = False
         txt_sino1.Enabled = False
         dt_accomdate.Enabled = False
@@ -261,19 +264,19 @@ Public Class Form1
     Private Sub datagrid1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles datagrid1.CellContentClick
 
     End Sub
-    Private Sub datagrid2_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles datagrid2.CellContentClick
-        If e.RowIndex >= 0 Then
-            Dim row As DataGridViewRow = datagrid2.Rows(e.RowIndex)
-            txt_fano.Text = row.Cells("FANO").Value.ToString()
-            cb_servicepro.Text = row.Cells("SERVICEPRO").Value.ToString()
-            dt_accomdate.Value = Convert.ToDateTime(row.Cells("ACCDATE").Value)
-            txtpo.Text = row.Cells("PODATE").Value.ToString()
-            boxc1.Text = row.Cells("CURRENCY").Value.ToString()
-            txt_amount1.Text = row.Cells("AMOUNT").Value.ToString()
-            txt_sino1.Text = row.Cells("SINO").Value.ToString()
-            txtrema.Text = row.Cells("REMARKS").Value.ToString()
-        End If
-    End Sub
+    'Private Sub datagrid2_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles datagrid2.CellContentClick
+    '    If e.RowIndex >= 0 Then
+    '        Dim row As DataGridViewRow = datagrid2.Rows(e.RowIndex)
+    '        txt_fano.Text = row.Cells("FANO").Value.ToString()
+    '        cb_servicepro.Text = row.Cells("SERVICEPRO").Value.ToString()
+    '        dt_accomdate.Value = Convert.ToDateTime(row.Cells("ACCDATE").Value)
+    '        txtpo.Text = row.Cells("PODATE").Value.ToString()
+    '        boxc1.Text = row.Cells("CURRENCY").Value.ToString()
+    '        txt_amount1.Text = row.Cells("AMOUNT").Value.ToString()
+    '        txt_sino1.Text = row.Cells("SINO").Value.ToString()
+    '        txtrema.Text = row.Cells("REMARKS").Value.ToString()
+    '    End If
+    'End Sub
 
     Public Sub LoadComboBoxData()
         Try
