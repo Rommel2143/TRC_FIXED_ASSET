@@ -73,6 +73,8 @@ Partial Class Form1
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.Guna2Panel2 = New Guna.UI2.WinForms.Guna2Panel()
+        Me.txt_invoice = New Guna.UI2.WinForms.Guna2TextBox()
+        Me.Label25 = New System.Windows.Forms.Label()
         Me.Guna2Button3 = New Guna.UI2.WinForms.Guna2Button()
         Me.boxc = New Guna.UI2.WinForms.Guna2ComboBox()
         Me.Label22 = New System.Windows.Forms.Label()
@@ -91,10 +93,8 @@ Partial Class Form1
         Me.datagrid2 = New Guna.UI2.WinForms.Guna2DataGridView()
         Me.cmbsearch = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Guna2Panel3 = New Guna.UI2.WinForms.Guna2Panel()
-        Me.btn_print = New Guna.UI2.WinForms.Guna2Button()
-        Me.txt_invoice = New Guna.UI2.WinForms.Guna2TextBox()
-        Me.Label25 = New System.Windows.Forms.Label()
         Me.btn_cancel = New Guna.UI2.WinForms.Guna2Button()
+        Me.btn_print = New Guna.UI2.WinForms.Guna2Button()
         CType(Me.datagrid1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Guna2Panel1.SuspendLayout()
         Me.Guna2Panel2.SuspendLayout()
@@ -477,10 +477,10 @@ Partial Class Form1
         Me.cb_supplier.BorderRadius = 3
         Me.cb_supplier.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.cb_supplier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cb_supplier.DropDownWidth = 400
+        Me.cb_supplier.DropDownWidth = 350
         Me.cb_supplier.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.cb_supplier.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.cb_supplier.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cb_supplier.Font = New System.Drawing.Font("Century Gothic", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cb_supplier.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
         Me.cb_supplier.ItemHeight = 30
         Me.cb_supplier.Location = New System.Drawing.Point(500, 274)
@@ -852,6 +852,38 @@ Partial Class Form1
         Me.Guna2Panel2.Size = New System.Drawing.Size(724, 424)
         Me.Guna2Panel2.TabIndex = 62
         '
+        'txt_invoice
+        '
+        Me.txt_invoice.BorderColor = System.Drawing.Color.DimGray
+        Me.txt_invoice.BorderRadius = 3
+        Me.txt_invoice.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txt_invoice.DefaultText = ""
+        Me.txt_invoice.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
+        Me.txt_invoice.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
+        Me.txt_invoice.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.txt_invoice.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
+        Me.txt_invoice.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.txt_invoice.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_invoice.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.txt_invoice.Location = New System.Drawing.Point(500, 87)
+        Me.txt_invoice.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.txt_invoice.Name = "txt_invoice"
+        Me.txt_invoice.PlaceholderText = "Enter Invoice No..."
+        Me.txt_invoice.SelectedText = ""
+        Me.txt_invoice.Size = New System.Drawing.Size(201, 36)
+        Me.txt_invoice.TabIndex = 161
+        '
+        'Label25
+        '
+        Me.Label25.AutoSize = True
+        Me.Label25.BackColor = System.Drawing.Color.White
+        Me.Label25.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label25.Location = New System.Drawing.Point(392, 102)
+        Me.Label25.Name = "Label25"
+        Me.Label25.Size = New System.Drawing.Size(103, 20)
+        Me.Label25.TabIndex = 160
+        Me.Label25.Text = "Invoice No. :"
+        '
         'Guna2Button3
         '
         Me.Guna2Button3.BackColor = System.Drawing.Color.Transparent
@@ -1189,57 +1221,6 @@ Partial Class Form1
         Me.Guna2Panel3.Size = New System.Drawing.Size(1346, 508)
         Me.Guna2Panel3.TabIndex = 209
         '
-        'btn_print
-        '
-        Me.btn_print.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.btn_print.BorderColor = System.Drawing.Color.DimGray
-        Me.btn_print.BorderRadius = 3
-        Me.btn_print.BorderThickness = 1
-        Me.btn_print.DisabledState.BorderColor = System.Drawing.Color.DarkGray
-        Me.btn_print.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
-        Me.btn_print.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
-        Me.btn_print.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
-        Me.btn_print.FillColor = System.Drawing.Color.DodgerBlue
-        Me.btn_print.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.btn_print.ForeColor = System.Drawing.Color.White
-        Me.btn_print.Location = New System.Drawing.Point(924, 444)
-        Me.btn_print.Name = "btn_print"
-        Me.btn_print.Size = New System.Drawing.Size(79, 37)
-        Me.btn_print.TabIndex = 209
-        Me.btn_print.Text = "PRINT"
-        '
-        'txt_invoice
-        '
-        Me.txt_invoice.BorderColor = System.Drawing.Color.DimGray
-        Me.txt_invoice.BorderRadius = 3
-        Me.txt_invoice.Cursor = System.Windows.Forms.Cursors.IBeam
-        Me.txt_invoice.DefaultText = ""
-        Me.txt_invoice.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
-        Me.txt_invoice.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(226, Byte), Integer))
-        Me.txt_invoice.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.txt_invoice.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
-        Me.txt_invoice.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.txt_invoice.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txt_invoice.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.txt_invoice.Location = New System.Drawing.Point(500, 87)
-        Me.txt_invoice.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
-        Me.txt_invoice.Name = "txt_invoice"
-        Me.txt_invoice.PlaceholderText = "Enter Invoice No..."
-        Me.txt_invoice.SelectedText = ""
-        Me.txt_invoice.Size = New System.Drawing.Size(201, 36)
-        Me.txt_invoice.TabIndex = 161
-        '
-        'Label25
-        '
-        Me.Label25.AutoSize = True
-        Me.Label25.BackColor = System.Drawing.Color.White
-        Me.Label25.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label25.Location = New System.Drawing.Point(392, 102)
-        Me.Label25.Name = "Label25"
-        Me.Label25.Size = New System.Drawing.Size(103, 20)
-        Me.Label25.TabIndex = 160
-        Me.Label25.Text = "Invoice No. :"
-        '
         'btn_cancel
         '
         Me.btn_cancel.Anchor = System.Windows.Forms.AnchorStyles.None
@@ -1258,6 +1239,25 @@ Partial Class Form1
         Me.btn_cancel.Size = New System.Drawing.Size(79, 37)
         Me.btn_cancel.TabIndex = 210
         Me.btn_cancel.Text = "CLEAR"
+        '
+        'btn_print
+        '
+        Me.btn_print.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.btn_print.BorderColor = System.Drawing.Color.DimGray
+        Me.btn_print.BorderRadius = 3
+        Me.btn_print.BorderThickness = 1
+        Me.btn_print.DisabledState.BorderColor = System.Drawing.Color.DarkGray
+        Me.btn_print.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
+        Me.btn_print.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
+        Me.btn_print.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer), CType(CType(141, Byte), Integer))
+        Me.btn_print.FillColor = System.Drawing.Color.DodgerBlue
+        Me.btn_print.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.btn_print.ForeColor = System.Drawing.Color.White
+        Me.btn_print.Location = New System.Drawing.Point(924, 444)
+        Me.btn_print.Name = "btn_print"
+        Me.btn_print.Size = New System.Drawing.Size(79, 37)
+        Me.btn_print.TabIndex = 209
+        Me.btn_print.Text = "PRINT"
         '
         'Form1
         '
