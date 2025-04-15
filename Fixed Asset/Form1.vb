@@ -194,15 +194,15 @@ Public Class Form1
             Dim cmdSelect As New MySqlCommand("SELECT COUNT(id)  FROM tblfixedasset", con)
             cmdSelect.Parameters.AddWithValue("@section", cb_section.Text)
 
-                ' Execute the command and read the data
-                Dim dr As MySqlDataReader = cmdSelect.ExecuteReader()
+            ' Execute the command and read the data
+            Dim dr As MySqlDataReader = cmdSelect.ExecuteReader()
 
-                If dr.Read() Then
-                    txt_no.Text = dr.GetInt32(0) + 1
+            If dr.Read() Then
+                txt_no.Text = dr.GetInt32(0) + 1
 
-                Else
+            Else
 
-                End If
+            End If
 
         Catch ex As Exception
             MessageBox.Show("Error loading data: " & ex.Message)
