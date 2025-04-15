@@ -22,15 +22,15 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.datagrid1 = New Guna.UI2.WinForms.Guna2DataGridView()
         Me.btn_edit = New Guna.UI2.WinForms.Guna2Button()
         Me.btn_save = New Guna.UI2.WinForms.Guna2Button()
@@ -104,48 +104,50 @@ Partial Class Form1
         '
         Me.datagrid1.AccessibleRole = System.Windows.Forms.AccessibleRole.Window
         Me.datagrid1.AllowUserToResizeRows = False
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Tai Le", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Silver
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.datagrid1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
+        DataGridViewCellStyle17.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle17.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.Silver
+        DataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        DataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.datagrid1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle17
         Me.datagrid1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.Color.DodgerBlue
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DodgerBlue
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.datagrid1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        Me.datagrid1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
+        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle18.BackColor = System.Drawing.Color.DodgerBlue
+        DataGridViewCellStyle18.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle18.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.DodgerBlue
+        DataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.datagrid1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle18
         Me.datagrid1.ColumnHeadersHeight = 30
         Me.datagrid1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle3.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
-        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Silver
-        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
-        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.datagrid1.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle19.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle19.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle19.ForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        DataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.Silver
+        DataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        DataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.datagrid1.DefaultCellStyle = DataGridViewCellStyle19
         Me.datagrid1.Dock = System.Windows.Forms.DockStyle.Top
         Me.datagrid1.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.datagrid1.Location = New System.Drawing.Point(0, 502)
         Me.datagrid1.MinimumSize = New System.Drawing.Size(20, 0)
         Me.datagrid1.Name = "datagrid1"
         Me.datagrid1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.datagrid1.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle20.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle20.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.datagrid1.RowHeadersDefaultCellStyle = DataGridViewCellStyle20
         Me.datagrid1.RowHeadersVisible = False
+        Me.datagrid1.RowTemplate.Height = 23
         Me.datagrid1.Size = New System.Drawing.Size(1346, 143)
         Me.datagrid1.TabIndex = 53
         Me.datagrid1.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White
@@ -166,13 +168,16 @@ Partial Class Form1
         Me.datagrid1.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.datagrid1.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.datagrid1.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
-        Me.datagrid1.ThemeStyle.RowsStyle.Height = 22
+        Me.datagrid1.ThemeStyle.RowsStyle.Height = 23
         Me.datagrid1.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.datagrid1.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
         '
         'btn_edit
         '
         Me.btn_edit.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.btn_edit.BorderColor = System.Drawing.Color.DimGray
+        Me.btn_edit.BorderRadius = 3
+        Me.btn_edit.BorderThickness = 1
         Me.btn_edit.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.btn_edit.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.btn_edit.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -189,6 +194,9 @@ Partial Class Form1
         'btn_save
         '
         Me.btn_save.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.btn_save.BorderColor = System.Drawing.Color.DimGray
+        Me.btn_save.BorderRadius = 3
+        Me.btn_save.BorderThickness = 1
         Me.btn_save.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.btn_save.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.btn_save.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -196,7 +204,7 @@ Partial Class Form1
         Me.btn_save.FillColor = System.Drawing.Color.DodgerBlue
         Me.btn_save.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.btn_save.ForeColor = System.Drawing.Color.White
-        Me.btn_save.Location = New System.Drawing.Point(754, 423)
+        Me.btn_save.Location = New System.Drawing.Point(755, 423)
         Me.btn_save.Name = "btn_save"
         Me.btn_save.Size = New System.Drawing.Size(79, 37)
         Me.btn_save.TabIndex = 49
@@ -204,6 +212,8 @@ Partial Class Form1
         '
         'txt_amount
         '
+        Me.txt_amount.BorderColor = System.Drawing.Color.DimGray
+        Me.txt_amount.BorderRadius = 3
         Me.txt_amount.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.txt_amount.DefaultText = ""
         Me.txt_amount.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
@@ -216,7 +226,6 @@ Partial Class Form1
         Me.txt_amount.Location = New System.Drawing.Point(498, 182)
         Me.txt_amount.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txt_amount.Name = "txt_amount"
-        Me.txt_amount.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txt_amount.PlaceholderText = "Enter Amount.."
         Me.txt_amount.SelectedText = ""
         Me.txt_amount.Size = New System.Drawing.Size(201, 36)
@@ -224,6 +233,8 @@ Partial Class Form1
         '
         'txt_itemdes
         '
+        Me.txt_itemdes.BorderColor = System.Drawing.Color.DimGray
+        Me.txt_itemdes.BorderRadius = 3
         Me.txt_itemdes.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.txt_itemdes.DefaultText = ""
         Me.txt_itemdes.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
@@ -236,7 +247,6 @@ Partial Class Form1
         Me.txt_itemdes.Location = New System.Drawing.Point(158, 336)
         Me.txt_itemdes.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txt_itemdes.Name = "txt_itemdes"
-        Me.txt_itemdes.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txt_itemdes.PlaceholderText = "Enter Item Description..."
         Me.txt_itemdes.SelectedText = ""
         Me.txt_itemdes.Size = New System.Drawing.Size(201, 36)
@@ -244,6 +254,8 @@ Partial Class Form1
         '
         'txt_sino
         '
+        Me.txt_sino.BorderColor = System.Drawing.Color.DimGray
+        Me.txt_sino.BorderRadius = 3
         Me.txt_sino.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.txt_sino.DefaultText = ""
         Me.txt_sino.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
@@ -256,7 +268,6 @@ Partial Class Form1
         Me.txt_sino.Location = New System.Drawing.Point(498, 96)
         Me.txt_sino.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txt_sino.Name = "txt_sino"
-        Me.txt_sino.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txt_sino.PlaceholderText = "Enter Serial No..."
         Me.txt_sino.SelectedText = ""
         Me.txt_sino.Size = New System.Drawing.Size(201, 36)
@@ -264,6 +275,8 @@ Partial Class Form1
         '
         'txt_pono
         '
+        Me.txt_pono.BorderColor = System.Drawing.Color.DimGray
+        Me.txt_pono.BorderRadius = 3
         Me.txt_pono.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.txt_pono.DefaultText = ""
         Me.txt_pono.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
@@ -276,7 +289,6 @@ Partial Class Form1
         Me.txt_pono.Location = New System.Drawing.Point(500, 43)
         Me.txt_pono.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txt_pono.Name = "txt_pono"
-        Me.txt_pono.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txt_pono.PlaceholderText = "Enter PO No..."
         Me.txt_pono.SelectedText = ""
         Me.txt_pono.Size = New System.Drawing.Size(201, 36)
@@ -284,6 +296,8 @@ Partial Class Form1
         '
         'txt_fano
         '
+        Me.txt_fano.BorderColor = System.Drawing.Color.DimGray
+        Me.txt_fano.BorderRadius = 3
         Me.txt_fano.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.txt_fano.DefaultText = ""
         Me.txt_fano.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
@@ -297,7 +311,6 @@ Partial Class Form1
         Me.txt_fano.Location = New System.Drawing.Point(158, 235)
         Me.txt_fano.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txt_fano.Name = "txt_fano"
-        Me.txt_fano.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txt_fano.PlaceholderText = "..."
         Me.txt_fano.ReadOnly = True
         Me.txt_fano.SelectedText = ""
@@ -306,6 +319,8 @@ Partial Class Form1
         '
         'txt_no
         '
+        Me.txt_no.BorderColor = System.Drawing.Color.DimGray
+        Me.txt_no.BorderRadius = 3
         Me.txt_no.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.txt_no.DefaultText = ""
         Me.txt_no.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
@@ -319,7 +334,6 @@ Partial Class Form1
         Me.txt_no.Location = New System.Drawing.Point(158, 90)
         Me.txt_no.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txt_no.Name = "txt_no"
-        Me.txt_no.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txt_no.PlaceholderText = "Enter No.."
         Me.txt_no.ReadOnly = True
         Me.txt_no.SelectedText = ""
@@ -439,13 +453,16 @@ Partial Class Form1
         'cb_section
         '
         Me.cb_section.BackColor = System.Drawing.Color.Transparent
+        Me.cb_section.BorderColor = System.Drawing.Color.DimGray
+        Me.cb_section.BorderRadius = 3
         Me.cb_section.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.cb_section.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cb_section.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.cb_section.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.cb_section.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cb_section.Font = New System.Drawing.Font("Century Gothic", 11.25!)
         Me.cb_section.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
         Me.cb_section.ItemHeight = 30
+        Me.cb_section.Items.AddRange(New Object() {"AS : Assembly", "PT : Painting", "MO : Molding", "MR : Motor Assy", "RB : Rubber", "TP : Tubepump", "SH : Shaft", "RA : Retainer Assy", "GA : General"})
         Me.cb_section.Location = New System.Drawing.Point(158, 138)
         Me.cb_section.Name = "cb_section"
         Me.cb_section.Size = New System.Drawing.Size(201, 36)
@@ -454,8 +471,11 @@ Partial Class Form1
         'cb_supplier
         '
         Me.cb_supplier.BackColor = System.Drawing.Color.Transparent
+        Me.cb_supplier.BorderColor = System.Drawing.Color.DimGray
+        Me.cb_supplier.BorderRadius = 3
         Me.cb_supplier.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.cb_supplier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cb_supplier.DropDownWidth = 350
         Me.cb_supplier.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.cb_supplier.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.cb_supplier.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -469,6 +489,8 @@ Partial Class Form1
         'cb_fatype
         '
         Me.cb_fatype.BackColor = System.Drawing.Color.Transparent
+        Me.cb_fatype.BorderColor = System.Drawing.Color.DimGray
+        Me.cb_fatype.BorderRadius = 3
         Me.cb_fatype.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.cb_fatype.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cb_fatype.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
@@ -522,6 +544,8 @@ Partial Class Form1
         '
         'txtpo
         '
+        Me.txtpo.BorderColor = System.Drawing.Color.DimGray
+        Me.txtpo.BorderRadius = 3
         Me.txtpo.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.txtpo.DefaultText = ""
         Me.txtpo.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
@@ -534,7 +558,6 @@ Partial Class Form1
         Me.txtpo.Location = New System.Drawing.Point(191, 144)
         Me.txtpo.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtpo.Name = "txtpo"
-        Me.txtpo.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txtpo.PlaceholderText = "Enter PO No..."
         Me.txtpo.SelectedText = ""
         Me.txtpo.Size = New System.Drawing.Size(254, 36)
@@ -560,6 +583,8 @@ Partial Class Form1
         'boxc1
         '
         Me.boxc1.BackColor = System.Drawing.Color.Transparent
+        Me.boxc1.BorderColor = System.Drawing.Color.DimGray
+        Me.boxc1.BorderRadius = 3
         Me.boxc1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.boxc1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.boxc1.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
@@ -586,6 +611,8 @@ Partial Class Form1
         '
         'txtrema
         '
+        Me.txtrema.BorderColor = System.Drawing.Color.DimGray
+        Me.txtrema.BorderRadius = 3
         Me.txtrema.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.txtrema.DefaultText = ""
         Me.txtrema.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
@@ -598,7 +625,6 @@ Partial Class Form1
         Me.txtrema.Location = New System.Drawing.Point(191, 326)
         Me.txtrema.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txtrema.Name = "txtrema"
-        Me.txtrema.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txtrema.PlaceholderText = "Enter Remarks.."
         Me.txtrema.SelectedText = ""
         Me.txtrema.Size = New System.Drawing.Size(254, 36)
@@ -618,6 +644,9 @@ Partial Class Form1
         'btn_access
         '
         Me.btn_access.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btn_access.BorderColor = System.Drawing.Color.DimGray
+        Me.btn_access.BorderRadius = 3
+        Me.btn_access.BorderThickness = 1
         Me.btn_access.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.btn_access.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.btn_access.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -634,11 +663,13 @@ Partial Class Form1
         'cb_servicepro
         '
         Me.cb_servicepro.BackColor = System.Drawing.Color.Transparent
+        Me.cb_servicepro.BorderColor = System.Drawing.Color.DimGray
+        Me.cb_servicepro.BorderRadius = 3
         Me.cb_servicepro.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.cb_servicepro.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cb_servicepro.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.cb_servicepro.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.cb_servicepro.Font = New System.Drawing.Font("Century Gothic", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.cb_servicepro.Font = New System.Drawing.Font("Century Gothic", 11.25!)
         Me.cb_servicepro.ForeColor = System.Drawing.Color.FromArgb(CType(CType(68, Byte), Integer), CType(CType(88, Byte), Integer), CType(CType(112, Byte), Integer))
         Me.cb_servicepro.ItemHeight = 30
         Me.cb_servicepro.Location = New System.Drawing.Point(191, 47)
@@ -649,6 +680,9 @@ Partial Class Form1
         'btnaddservice
         '
         Me.btnaddservice.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnaddservice.BorderColor = System.Drawing.Color.DimGray
+        Me.btnaddservice.BorderRadius = 3
+        Me.btnaddservice.BorderThickness = 1
         Me.btnaddservice.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.btnaddservice.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.btnaddservice.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -664,7 +698,9 @@ Partial Class Form1
         '
         'dt_accomdate
         '
+        Me.dt_accomdate.BorderColor = System.Drawing.Color.DimGray
         Me.dt_accomdate.BorderRadius = 2
+        Me.dt_accomdate.BorderThickness = 1
         Me.dt_accomdate.Checked = True
         Me.dt_accomdate.CustomFormat = "MMMM dd yyyy"
         Me.dt_accomdate.FillColor = System.Drawing.SystemColors.Highlight
@@ -681,6 +717,8 @@ Partial Class Form1
         '
         'txt_sino1
         '
+        Me.txt_sino1.BorderColor = System.Drawing.Color.DimGray
+        Me.txt_sino1.BorderRadius = 3
         Me.txt_sino1.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.txt_sino1.DefaultText = ""
         Me.txt_sino1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
@@ -693,7 +731,6 @@ Partial Class Form1
         Me.txt_sino1.Location = New System.Drawing.Point(191, 276)
         Me.txt_sino1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txt_sino1.Name = "txt_sino1"
-        Me.txt_sino1.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txt_sino1.PlaceholderText = "Enter SI NO..."
         Me.txt_sino1.SelectedText = ""
         Me.txt_sino1.Size = New System.Drawing.Size(254, 36)
@@ -701,6 +738,8 @@ Partial Class Form1
         '
         'txt_amount1
         '
+        Me.txt_amount1.BorderColor = System.Drawing.Color.DimGray
+        Me.txt_amount1.BorderRadius = 3
         Me.txt_amount1.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.txt_amount1.DefaultText = ""
         Me.txt_amount1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
@@ -713,7 +752,6 @@ Partial Class Form1
         Me.txt_amount1.Location = New System.Drawing.Point(191, 231)
         Me.txt_amount1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txt_amount1.Name = "txt_amount1"
-        Me.txt_amount1.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txt_amount1.PlaceholderText = "Enter Amount..."
         Me.txt_amount1.SelectedText = ""
         Me.txt_amount1.Size = New System.Drawing.Size(254, 36)
@@ -830,6 +868,8 @@ Partial Class Form1
         'boxc
         '
         Me.boxc.BackColor = System.Drawing.Color.Transparent
+        Me.boxc.BorderColor = System.Drawing.Color.DimGray
+        Me.boxc.BorderRadius = 3
         Me.boxc.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.boxc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.boxc.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
@@ -873,6 +913,8 @@ Partial Class Form1
         '
         'txt_remark
         '
+        Me.txt_remark.BorderColor = System.Drawing.Color.DimGray
+        Me.txt_remark.BorderRadius = 3
         Me.txt_remark.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.txt_remark.DefaultText = ""
         Me.txt_remark.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
@@ -885,7 +927,6 @@ Partial Class Form1
         Me.txt_remark.Location = New System.Drawing.Point(498, 338)
         Me.txt_remark.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txt_remark.Name = "txt_remark"
-        Me.txt_remark.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txt_remark.PlaceholderText = "Enter Remarks.."
         Me.txt_remark.SelectedText = ""
         Me.txt_remark.Size = New System.Drawing.Size(201, 36)
@@ -905,6 +946,8 @@ Partial Class Form1
         'cb_status
         '
         Me.cb_status.BackColor = System.Drawing.Color.Transparent
+        Me.cb_status.BorderColor = System.Drawing.Color.DimGray
+        Me.cb_status.BorderRadius = 3
         Me.cb_status.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed
         Me.cb_status.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cb_status.FocusedColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
@@ -942,6 +985,8 @@ Partial Class Form1
         '
         'txt_user
         '
+        Me.txt_user.BorderColor = System.Drawing.Color.DimGray
+        Me.txt_user.BorderRadius = 3
         Me.txt_user.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.txt_user.DefaultText = ""
         Me.txt_user.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
@@ -955,7 +1000,6 @@ Partial Class Form1
         Me.txt_user.Location = New System.Drawing.Point(158, 49)
         Me.txt_user.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txt_user.Name = "txt_user"
-        Me.txt_user.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txt_user.PlaceholderText = "..."
         Me.txt_user.ReadOnly = True
         Me.txt_user.SelectedText = ""
@@ -964,7 +1008,9 @@ Partial Class Form1
         '
         'dt_date
         '
+        Me.dt_date.BorderColor = System.Drawing.Color.DimGray
         Me.dt_date.BorderRadius = 2
+        Me.dt_date.BorderThickness = 1
         Me.dt_date.Checked = True
         Me.dt_date.CustomFormat = "MMMM dd yyyy"
         Me.dt_date.FillColor = System.Drawing.SystemColors.Highlight
@@ -1014,6 +1060,9 @@ Partial Class Form1
         'btn_exit
         '
         Me.btn_exit.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.btn_exit.BorderColor = System.Drawing.Color.DimGray
+        Me.btn_exit.BorderRadius = 3
+        Me.btn_exit.BorderThickness = 1
         Me.btn_exit.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.btn_exit.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.btn_exit.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
@@ -1031,48 +1080,50 @@ Partial Class Form1
         '
         Me.datagrid2.AccessibleRole = System.Windows.Forms.AccessibleRole.Window
         Me.datagrid2.AllowUserToResizeRows = False
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Tai Le", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Silver
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.datagrid2.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft
+        DataGridViewCellStyle21.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle21.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.Silver
+        DataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        DataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.datagrid2.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle21
         Me.datagrid2.BackgroundColor = System.Drawing.SystemColors.ActiveCaption
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.Color.DodgerBlue
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.DodgerBlue
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.datagrid2.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
+        Me.datagrid2.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None
+        DataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle22.BackColor = System.Drawing.Color.DodgerBlue
+        DataGridViewCellStyle22.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle22.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.DodgerBlue
+        DataGridViewCellStyle22.SelectionForeColor = System.Drawing.Color.Black
+        DataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.datagrid2.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle22
         Me.datagrid2.ColumnHeadersHeight = 30
         Me.datagrid2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle7.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
-        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Silver
-        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
-        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.datagrid2.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle23.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle23.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle23.ForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        DataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.Silver
+        DataGridViewCellStyle23.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
+        DataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.datagrid2.DefaultCellStyle = DataGridViewCellStyle23
         Me.datagrid2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.datagrid2.GridColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.datagrid2.Location = New System.Drawing.Point(0, 645)
         Me.datagrid2.MinimumSize = New System.Drawing.Size(20, 0)
         Me.datagrid2.Name = "datagrid2"
         Me.datagrid2.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle8.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.White
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.datagrid2.RowHeadersDefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle24.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle24.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.White
+        DataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.datagrid2.RowHeadersDefaultCellStyle = DataGridViewCellStyle24
         Me.datagrid2.RowHeadersVisible = False
+        Me.datagrid2.RowTemplate.Height = 23
         Me.datagrid2.Size = New System.Drawing.Size(1346, 110)
         Me.datagrid2.TabIndex = 191
         Me.datagrid2.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White
@@ -1093,7 +1144,7 @@ Partial Class Form1
         Me.datagrid2.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal
         Me.datagrid2.ThemeStyle.RowsStyle.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.datagrid2.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
-        Me.datagrid2.ThemeStyle.RowsStyle.Height = 22
+        Me.datagrid2.ThemeStyle.RowsStyle.Height = 23
         Me.datagrid2.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(229, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.datagrid2.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(CType(CType(71, Byte), Integer), CType(CType(69, Byte), Integer), CType(CType(94, Byte), Integer))
         '
@@ -1114,7 +1165,6 @@ Partial Class Form1
         Me.cmbsearch.Location = New System.Drawing.Point(14, 422)
         Me.cmbsearch.Margin = New System.Windows.Forms.Padding(4)
         Me.cmbsearch.Name = "cmbsearch"
-        Me.cmbsearch.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.cmbsearch.PlaceholderText = "Enter FA NO..."
         Me.cmbsearch.SelectedText = ""
         Me.cmbsearch.Size = New System.Drawing.Size(224, 32)
@@ -1138,6 +1188,9 @@ Partial Class Form1
         'btn_print
         '
         Me.btn_print.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.btn_print.BorderColor = System.Drawing.Color.DimGray
+        Me.btn_print.BorderRadius = 3
+        Me.btn_print.BorderThickness = 1
         Me.btn_print.DisabledState.BorderColor = System.Drawing.Color.DarkGray
         Me.btn_print.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray
         Me.btn_print.DisabledState.FillColor = System.Drawing.Color.FromArgb(CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer), CType(CType(169, Byte), Integer))
