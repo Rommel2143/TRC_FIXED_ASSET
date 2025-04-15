@@ -34,7 +34,7 @@ Public Class Form1
             cmd.Parameters.AddWithValue("@no", txt_no.Text)
             cmd.Parameters.AddWithValue("@fano", txt_fano.Text)
             cmd.Parameters.AddWithValue("@fanotype", cb_fatype.Text)
-            cmd.Parameters.AddWithValue("@section", cb_section.Text)
+            cmd.Parameters.AddWithValue("@section", cb_section.Text.Split(":"c)(1).Trim)
             cmd.Parameters.AddWithValue("@itemdes", txt_itemdes.Text)
             cmd.Parameters.AddWithValue("@date", dt_date.Value.ToString("yyyy-MM-dd"))
             cmd.Parameters.AddWithValue("@pono", txt_pono.Text)
@@ -53,11 +53,11 @@ Public Class Form1
             CloseConnection()
             OpenConnection()
             ' Update the incremented secno in the database without using @section
-            Dim cmdUpdate As New MySqlCommand("UPDATE tblcn SET secno=@newSecNo WHERE selection=@section", con)
-            cmdUpdate.Parameters.AddWithValue("@newSecNo", secno)
-            cmdUpdate.Parameters.AddWithValue("@section", cb_section.Text)
+            'Dim cmdUpdate As New MySqlCommand("UPDATE tblcn SET secno=@newSecNo WHERE selection=@section", con)
+            'cmdUpdate.Parameters.AddWithValue("@newSecNo", secno)
+            'cmdUpdate.Parameters.AddWithValue("@section", cb_section.Text)
             ' Execute the update command without adding the @section parameter
-            cmdUpdate.ExecuteNonQuery()
+            'cmdUpdate.ExecuteNonQuery()
             txt_fano.Clear()
             ClearInputFields()
             LoadData()
@@ -230,11 +230,12 @@ Public Class Form1
                 cmd.Parameters.AddWithValue("@id", id)
                 cmd.Parameters.AddWithValue("@fullname", txt_user.Text)
                 cmd.Parameters.AddWithValue("@no", txt_no.Text)
-                cmd.Parameters.AddWithValue("@fano", txt_fano.Text)
+
                 cmd.Parameters.AddWithValue("@fanotype", cb_fatype.Text)
-                cmd.Parameters.AddWithValue("@section", cb_section.Text)
+                cmd.Parameters.AddWithValue("@section", cb_section.Text.Split(":"c)(1).Trim)
                 cmd.Parameters.AddWithValue("@itemdes", txt_itemdes.Text)
                 cmd.Parameters.AddWithValue("@date", dt_date.Value.ToString("yyyy-MM-dd"))
+
                 cmd.Parameters.AddWithValue("@pono", txt_pono.Text)
                 cmd.Parameters.AddWithValue("@sino", txt_sino.Text)
                 cmd.Parameters.AddWithValue("@amount", Convert.ToDecimal(txt_amount.Text))
@@ -242,6 +243,7 @@ Public Class Form1
                 cmd.Parameters.AddWithValue("@supplier", cb_supplier.Text)
                 cmd.Parameters.AddWithValue("@status", cb_status.Text)
                 cmd.Parameters.AddWithValue("@remark", txt_remark.Text)
+                cmd.Parameters.AddWithValue("@fano", txt_fano.Text)
                 cmd.ExecuteNonQuery()
             End Using
         Catch ex As Exception
@@ -396,9 +398,9 @@ Public Class Form1
     Private Sub datagrid1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles datagrid1.CellClick
         If e.RowIndex >= 0 Then
             Dim row As DataGridViewRow = datagrid1.Rows(e.RowIndex)
-            txt_user.Text = row.Cells("FULLNAME").Value.ToString()
+            'txt_user.Text = row.Cells("FULLNAME").Value.ToString()
             txt_no.Text = row.Cells("NO").Value.ToString()
-            txt_fano.Text = row.Cells("FANO").Value.ToString()
+
             cb_fatype.Text = row.Cells("FATYPE").Value.ToString()
 
 
@@ -424,6 +426,7 @@ Public Class Form1
 
             txt_itemdes.Text = row.Cells("ITEMDES").Value.ToString()
             dt_date.Value = Convert.ToDateTime(row.Cells("DATE").Value)
+            txt_fano.Text = row.Cells("FANO").Value.ToString()
             txt_pono.Text = row.Cells("PONO").Value.ToString()
             txt_sino.Text = row.Cells("SINO").Value.ToString()
             boxc.Text = row.Cells("CURRENCY").Value.ToString()
@@ -607,6 +610,10 @@ Public Class Form1
 
 
     Private Sub Label22_Click(sender As Object, e As EventArgs) Handles Label22.Click
+
+    End Sub
+
+    Private Sub txt_user_TextChanged(sender As Object, e As EventArgs) Handles txt_user.TextChanged
 
     End Sub
 End Class
