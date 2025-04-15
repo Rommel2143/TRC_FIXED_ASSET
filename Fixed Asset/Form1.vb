@@ -14,6 +14,7 @@ Public Class Form1
         LoadComboBoxData()
         DisableInputFields()
         cb_status.Text = "Active"
+        btn_edit.Enabled = False
 
 
     End Sub
@@ -27,17 +28,18 @@ Public Class Form1
 
             OpenConnection()
             cmd.Connection = con
-            cmd.CommandText = "INSERT INTO tblfixedasset (FULLNAME, NO, FANO, FATYPE, SECTION, ITEMDES, DATE, PONO, SINO, AMOUNT,CURRENCY, SUPPLIER, STATUS, REMARK, QRCODE) 
-                                VALUES (@fullname, @no, @fano, @fanotype, @section, @itemdes, @date, @pono, @sino, @amount,@currency, @supplier, @status, @remark, @qrcode)"
+            cmd.CommandText = "INSERT INTO tblfixedasset (FULLNAME, NO, FANO, FATYPE, SECTION, ITEMDES, DATE, PONO, INVOICE, SINO, AMOUNT,CURRENCY, SUPPLIER, STATUS, REMARK, QRCODE) 
+                                VALUES (@fullname, @no, @fano, @fanotype, @section, @itemdes, @date, @pono, @invoice, @sino, @amount,@currency, @supplier, @status, @remark, @qrcode)"
             cmd.Parameters.Clear()
             cmd.Parameters.AddWithValue("@fullname", txt_user.Text)
             cmd.Parameters.AddWithValue("@no", txt_no.Text)
             cmd.Parameters.AddWithValue("@fano", txt_fano.Text)
             cmd.Parameters.AddWithValue("@fanotype", cb_fatype.Text)
-            cmd.Parameters.AddWithValue("@section", cb_section.Text)
+            cmd.Parameters.AddWithValue("@section", cb_section.Text.Split(":"c)(1).Trim)
             cmd.Parameters.AddWithValue("@itemdes", txt_itemdes.Text)
             cmd.Parameters.AddWithValue("@date", dt_date.Value.ToString("yyyy-MM-dd"))
             cmd.Parameters.AddWithValue("@pono", txt_pono.Text)
+            cmd.Parameters.AddWithValue("@invoice", txt_invoice.Text)
             cmd.Parameters.AddWithValue("@sino", txt_sino.Text)
             cmd.Parameters.AddWithValue("@amount", Convert.ToDecimal(txt_amount.Text))
             cmd.Parameters.AddWithValue("@currency", boxc.Text)
@@ -53,11 +55,11 @@ Public Class Form1
             CloseConnection()
             OpenConnection()
             ' Update the incremented secno in the database without using @section
-            Dim cmdUpdate As New MySqlCommand("UPDATE tblcn SET secno=@newSecNo WHERE selection=@section", con)
-            cmdUpdate.Parameters.AddWithValue("@newSecNo", secno)
-            cmdUpdate.Parameters.AddWithValue("@section", cb_section.Text)
+            'Dim cmdUpdate As New MySqlCommand("UPDATE tblcn SET secno=@newSecNo WHERE selection=@section", con)
+            'cmdUpdate.Parameters.AddWithValue("@newSecNo", secno)
+            'cmdUpdate.Parameters.AddWithValue("@section", cb_section.Text)
             ' Execute the update command without adding the @section parameter
-            cmdUpdate.ExecuteNonQuery()
+            'cmdUpdate.ExecuteNonQuery()
             txt_fano.Clear()
             ClearInputFields()
             LoadData()
@@ -78,8 +80,10 @@ Public Class Form1
            cb_fatype.SelectedIndex = -1 Or
            cb_section.SelectedIndex = -1 Or
            cb_status.SelectedIndex = -1 Or
+           boxc.SelectedIndex = -1 Or
            String.IsNullOrWhiteSpace(txt_itemdes.Text) Or
            String.IsNullOrWhiteSpace(txt_pono.Text) Or
+           String.IsNullOrWhiteSpace(txt_invoice.Text) Or
            String.IsNullOrWhiteSpace(txt_sino.Text) Or
            String.IsNullOrWhiteSpace(txt_amount.Text) Or
            cb_supplier.SelectedIndex = -1 Then
@@ -137,6 +141,7 @@ Public Class Form1
         txt_itemdes.Clear()
         dt_date.Value = DateTime.Now
         txt_pono.Clear()
+        txt_invoice.Clear()
         txt_sino.Clear()
         boxc.SelectedIndex = -1
         txt_amount.Clear()
@@ -225,23 +230,26 @@ Public Class Form1
             con.Close()
             con.Open()
 
-            Using cmd As New MySqlCommand("UPDATE tblfixedasset SET FULLNAME=@fullname, NO=@no, FANO=@fano, FATYPE=@fanotype, SECTION=@section, ITEMDES=@itemdes, DATE=@date, PONO=@pono, SINO=@sino, AMOUNT=@amount, CURRENCY=@currency, SUPPLIER=@supplier, STATUS=@status, REMARK=@remark WHERE id=@id", con)
+            Using cmd As New MySqlCommand("UPDATE tblfixedasset SET FULLNAME=@fullname, NO=@no, FANO=@fano, FATYPE=@fanotype, SECTION=@section, ITEMDES=@itemdes, DATE=@date, PONO=@pono, INVOICE=@invoice, SINO=@sino, AMOUNT=@amount, CURRENCY=@currency, SUPPLIER=@supplier, STATUS=@status, REMARK=@remark WHERE id=@id", con)
                 cmd.Parameters.Clear()
                 cmd.Parameters.AddWithValue("@id", id)
                 cmd.Parameters.AddWithValue("@fullname", txt_user.Text)
                 cmd.Parameters.AddWithValue("@no", txt_no.Text)
-                cmd.Parameters.AddWithValue("@fano", txt_fano.Text)
+
                 cmd.Parameters.AddWithValue("@fanotype", cb_fatype.Text)
-                cmd.Parameters.AddWithValue("@section", cb_section.Text)
+                cmd.Parameters.AddWithValue("@section", cb_section.Text.Split(":"c)(1).Trim)
                 cmd.Parameters.AddWithValue("@itemdes", txt_itemdes.Text)
                 cmd.Parameters.AddWithValue("@date", dt_date.Value.ToString("yyyy-MM-dd"))
+
                 cmd.Parameters.AddWithValue("@pono", txt_pono.Text)
+                cmd.Parameters.AddWithValue("@invoice", txt_invoice.Text)
                 cmd.Parameters.AddWithValue("@sino", txt_sino.Text)
                 cmd.Parameters.AddWithValue("@amount", Convert.ToDecimal(txt_amount.Text))
                 cmd.Parameters.AddWithValue("@currency", boxc.Text)
                 cmd.Parameters.AddWithValue("@supplier", cb_supplier.Text)
                 cmd.Parameters.AddWithValue("@status", cb_status.Text)
                 cmd.Parameters.AddWithValue("@remark", txt_remark.Text)
+                cmd.Parameters.AddWithValue("@fano", txt_fano.Text)
                 cmd.ExecuteNonQuery()
             End Using
         Catch ex As Exception
@@ -259,6 +267,8 @@ Public Class Form1
         LoadData()
 
         datagrid1.ClearSelection()
+        btn_save.Enabled = False
+        btn_save.Enabled = True
     End Sub
 
 
@@ -414,10 +424,12 @@ Public Class Form1
 
     Private Sub datagrid1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles datagrid1.CellClick
         If e.RowIndex >= 0 Then
+            btn_edit.Enabled = True
+            btn_save.Enabled = False
             Dim row As DataGridViewRow = datagrid1.Rows(e.RowIndex)
-            txt_user.Text = row.Cells("FULLNAME").Value.ToString()
+            'txt_user.Text = row.Cells("FULLNAME").Value.ToString()
             txt_no.Text = row.Cells("NO").Value.ToString()
-            txt_fano.Text = row.Cells("FANO").Value.ToString()
+
             cb_fatype.Text = row.Cells("FATYPE").Value.ToString()
 
 
@@ -443,7 +455,9 @@ Public Class Form1
 
             txt_itemdes.Text = row.Cells("ITEMDES").Value.ToString()
             dt_date.Value = Convert.ToDateTime(row.Cells("DATE").Value)
+            txt_fano.Text = row.Cells("FANO").Value.ToString()
             txt_pono.Text = row.Cells("PONO").Value.ToString()
+            txt_invoice.Text = row.Cells("INVOICE").Value.ToString()
             txt_sino.Text = row.Cells("SINO").Value.ToString()
             boxc.Text = row.Cells("CURRENCY").Value.ToString()
             txt_amount.Text = row.Cells("AMOUNT").Value.ToString()
@@ -627,5 +641,20 @@ Public Class Form1
 
     Private Sub Label22_Click(sender As Object, e As EventArgs) Handles Label22.Click
 
+    End Sub
+
+    Private Sub txt_user_TextChanged(sender As Object, e As EventArgs) Handles txt_user.TextChanged
+
+    End Sub
+
+    Private Sub btn_cancel_Click(sender As Object, e As EventArgs) Handles btn_cancel.Click
+        txt_fano.Text = String.Empty
+        ClearInputFields()
+        ClearInputFields1()
+        LoadData()
+        datagrid1.ClearSelection()
+        datagrid2.ClearSelection()
+        btn_edit.Enabled = False
+        btn_save.Enabled = True
     End Sub
 End Class
