@@ -5,6 +5,7 @@ Public Class Form1
     Dim secno As Integer
     Public qrcode As String
     Public dataid As Integer = 0
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LoadData()
         LoadData1()
@@ -285,7 +286,7 @@ Public Class Form1
             cmb_display("SELECT DISTINCT(selection) FROM cbmasterlist WHERE destination='Supplier'", "selection", cb_supplier)
             cmb_display("SELECT DISTINCT(selection) FROM cbmasterlist WHERE destination='FA Type'", "selection", cb_fatype)
             cmb_display("SELECT DISTINCT(selection) FROM cbmasterlist WHERE destination='Service Provider'", "selection", cb_servicepro)
-            cmb_display("SELECT DISTINCT(selection) FROM tblcn", "selection", cb_section)
+
 
 
 
@@ -341,7 +342,6 @@ Public Class Form1
     End Sub
 
     Private Sub cb_section_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cb_section.SelectedIndexChanged
-
 
 
     End Sub
@@ -400,7 +400,28 @@ Public Class Form1
             txt_no.Text = row.Cells("NO").Value.ToString()
             txt_fano.Text = row.Cells("FANO").Value.ToString()
             cb_fatype.Text = row.Cells("FATYPE").Value.ToString()
-            cb_section.Text = row.Cells("SECTION").Value.ToString()
+
+
+            'cb_section.Text = row.Cells("SECTION").Value.ToString()
+
+            Dim sectionValue As String = row.Cells("SECTION").Value.ToString().Trim().ToUpper()
+
+            Dim matchedIndex As Integer = -1
+            For i As Integer = 0 To cb_section.Items.Count - 1
+                Dim itemText As String = cb_section.Items(i).ToString().ToUpper()
+                If itemText.Contains(sectionValue) Then
+                    matchedIndex = i
+                    Exit For
+                End If
+            Next
+
+            If matchedIndex >= 0 Then
+                cb_section.SelectedIndex = matchedIndex
+            Else
+                cb_section.SelectedIndex = -1 ' Optional: clear selection if not found
+            End If
+
+
             txt_itemdes.Text = row.Cells("ITEMDES").Value.ToString()
             dt_date.Value = Convert.ToDateTime(row.Cells("DATE").Value)
             txt_pono.Text = row.Cells("PONO").Value.ToString()
@@ -491,36 +512,48 @@ Public Class Form1
     End Sub
 
     Private Sub dt_date_ValueChanged(sender As Object, e As EventArgs) Handles dt_date.ValueChanged
+        If cb_section.SelectedIndex = -1 Then
+            Exit Sub
+        End If
+
+
+
+
         CloseConnection()
 
         OpenConnection()
 
         Try
             ' Prepare the SQL query to fetch data based on the selected section
-            Dim cmdSelect As New MySqlCommand("SELECT secno, secchar FROM tblcn WHERE selection=@section", con)
-            cmdSelect.Parameters.AddWithValue("@section", cb_section.Text)
+            'Dim cmdSelect As New MySqlCommand("SELECT secno, secchar FROM tblcn WHERE selection=@section", con)
 
-            ' Execute the command and read the data
-            Dim dr As MySqlDataReader = cmdSelect.ExecuteReader()
+            'cmdSelect.Parameters.AddWithValue("@section", cb_section.Text)
 
-            If dr.Read() Then
-                ' Fetch secno and secchar from the result
-                secno = Convert.ToInt32(dr("secno"))
-                Dim sechar As String = dr("secchar").ToString()
+            '' Execute the command and read the data
+            'Dim dr As MySqlDataReader = cmdSelect.ExecuteReader()
 
-                ' Increment secno
-                secno += 1
+            'If dr.Read() Then
+            '    ' Fetch secno and secchar from the result
+            '    secno = Convert.ToInt32(dr("secno"))
+            '    Dim sechar As String = dr("secchar").ToString()
 
-                ' Format the new secno as 5 digits and assign to txt_fano
-                txt_fano.Text = sechar & "-" & dt_date.Value.ToString("yyyy") & "-" & secno.ToString("00000")
-
-                ' Close the reader before updating the database
-                dr.Close()
+            '    ' Increment secno
+            '    secno += 1
 
 
-            Else
+            ' Format the new secno as 5 digits and assign to txt_fano
+            '  txt_fano.Text = sechar & "-" & dt_date.Value.ToString("yyyy") & "-" & secno.ToString("00000")
 
-            End If
+
+            txt_fano.Text = getFAno(dt_date.Value.ToString("yyyy"), cb_section.Text.Split(":"c)(0).Trim)
+
+            '' Close the reader before updating the database
+            'dr.Close()
+
+
+            'Else
+
+            'End If
 
 
         Catch ex As Exception
@@ -530,6 +563,37 @@ Public Class Form1
             CloseConnection()
         End Try
     End Sub
+
+
+    Private Function getFAno(ayear As String, sectioncode As String) As String
+        Try
+            con.Close()
+            con.Open()
+
+
+            Dim query As String = "SELECT CONCAT(@sectioncode, '-', @ayear, '-', LPAD(IFNULL(COUNT(id), 0) + 1, 5, '0')) AS ID " &
+                      "FROM tblfixedasset WHERE YEAR(date) = @year AND LEFT(`FANO`, LOCATE('-', `FANO`) - 1) = @sectioncode;"
+
+
+            Using cmd As New MySqlCommand(query, con)
+                cmd.Parameters.AddWithValue("@sectioncode", sectioncode)
+                cmd.Parameters.AddWithValue("@ayear", ayear)
+                cmd.Parameters.AddWithValue("@year", ayear)
+
+                dr = cmd.ExecuteReader()
+                If dr.Read() Then
+                    Return dr("ID").ToString()
+                End If
+            End Using
+        Catch ex As Exception
+            MessageBox.Show("Error: " & ex.Message)
+        Finally
+            con.Close()
+        End Try
+
+        Return ""
+    End Function
+
 
     Private Sub Guna2Panel3_Paint(sender As Object, e As PaintEventArgs) Handles Guna2Panel3.Paint
 
@@ -541,4 +605,8 @@ Public Class Form1
     End Sub
 
 
+
+    Private Sub Label22_Click(sender As Object, e As EventArgs) Handles Label22.Click
+
+    End Sub
 End Class

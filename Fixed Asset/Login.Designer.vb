@@ -23,10 +23,10 @@ Partial Class Login
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.Guna2Panel1 = New Guna.UI2.WinForms.Guna2Panel()
+        Me.labelerror = New System.Windows.Forms.Label()
         Me.txtbarcode = New Guna.UI2.WinForms.Guna2TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.labelerror = New System.Windows.Forms.Label()
         Me.Guna2Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -48,8 +48,22 @@ Partial Class Login
         Me.Guna2Panel1.Size = New System.Drawing.Size(810, 484)
         Me.Guna2Panel1.TabIndex = 1
         '
+        'labelerror
+        '
+        Me.labelerror.AutoSize = True
+        Me.labelerror.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.labelerror.ForeColor = System.Drawing.Color.Tomato
+        Me.labelerror.Location = New System.Drawing.Point(353, 242)
+        Me.labelerror.Name = "labelerror"
+        Me.labelerror.Size = New System.Drawing.Size(106, 15)
+        Me.labelerror.TabIndex = 23
+        Me.labelerror.Text = "ID not Registered!"
+        Me.labelerror.Visible = False
+        '
         'txtbarcode
         '
+        Me.txtbarcode.BorderColor = System.Drawing.Color.DimGray
+        Me.txtbarcode.BorderRadius = 3
         Me.txtbarcode.Cursor = System.Windows.Forms.Cursors.IBeam
         Me.txtbarcode.DefaultText = ""
         Me.txtbarcode.DisabledState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer), CType(CType(208, Byte), Integer))
@@ -57,11 +71,10 @@ Partial Class Login
         Me.txtbarcode.DisabledState.ForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.txtbarcode.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer), CType(CType(138, Byte), Integer))
         Me.txtbarcode.FocusedState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
-        Me.txtbarcode.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.txtbarcode.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.txtbarcode.HoverState.BorderColor = System.Drawing.Color.FromArgb(CType(CType(94, Byte), Integer), CType(CType(148, Byte), Integer), CType(CType(255, Byte), Integer))
         Me.txtbarcode.Location = New System.Drawing.Point(272, 197)
         Me.txtbarcode.Name = "txtbarcode"
-        Me.txtbarcode.PasswordChar = Global.Microsoft.VisualBasic.ChrW(0)
         Me.txtbarcode.PlaceholderText = ""
         Me.txtbarcode.SelectedText = ""
         Me.txtbarcode.Size = New System.Drawing.Size(270, 42)
@@ -88,18 +101,6 @@ Partial Class Login
         Me.Label1.Size = New System.Drawing.Size(198, 30)
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Philippines TRC Inc."
-        '
-        'labelerror
-        '
-        Me.labelerror.AutoSize = True
-        Me.labelerror.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.labelerror.ForeColor = System.Drawing.Color.Tomato
-        Me.labelerror.Location = New System.Drawing.Point(353, 242)
-        Me.labelerror.Name = "labelerror"
-        Me.labelerror.Size = New System.Drawing.Size(106, 15)
-        Me.labelerror.TabIndex = 23
-        Me.labelerror.Text = "ID not Registered!"
-        Me.labelerror.Visible = False
         '
         'Login
         '
